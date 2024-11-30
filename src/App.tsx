@@ -2,7 +2,8 @@ import { Layout } from './Layout'
 import { Header } from './Header'
 import { Main } from './Main'
 import { Footer } from './Footer'
-
+import { CarouselCelebrities } from './CarouselCelebrities'
+import { RecentNewsSlider } from './RecentNews'
 
 export function App(){
     return(
@@ -10,7 +11,9 @@ export function App(){
             <Layout>
                 <Header></Header>
                 <Main></Main>
-                <Footer></Footer>
+                <CarouselCelebrities></CarouselCelebrities>
+                <RecentNewsSlider></RecentNewsSlider>
+                {/* <Footer></Footer> */}
             </Layout>
         </div>
     )
