@@ -4,7 +4,7 @@ import { Main } from './Main'
 import { Footer } from './Footer'
 
 import { CarouselCelebrities } from './CarouselCelebrities'
-import { RecentNewsSlider } from './RecentNews'
+import { RecentNewsSlider } from './RecentNewsSlider'
 
 
 export function App(){
@@ -13,11 +13,7 @@ export function App(){
             <Layout>
                 <Header></Header>
                 <Main></Main>
-
-                <CarouselCelebrities></CarouselCelebrities>
-                <RecentNewsSlider></RecentNewsSlider>
-
-                {/* <Footer></Footer> */}
+                <Footer></Footer>
             </Layout>
         </div>
     )
