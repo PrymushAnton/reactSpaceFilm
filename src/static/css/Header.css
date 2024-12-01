@@ -8,8 +8,9 @@ header {
     height: 66px;
     position: absolute;
     top: 0;
-    width: calc(100vw - 17px) !important;
-    
+
+    width: calc(100vw - 17px);
+    color: white;
 }
 
 #loginImg {
@@ -48,4 +49,11 @@ header {
     height: 30px;
     border-radius: 15px;
     padding: 10px;
+    border: 0px;
+    outline: 0
+}
+
+header a {
+    color: white;
+    text-decoration: none;
 }
