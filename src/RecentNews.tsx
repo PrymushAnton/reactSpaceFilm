@@ -6,16 +6,6 @@ import image5 from "./static/images/news/5.png";
 import image6 from "./static/images/news/6.png";
 import "./static/css/RecentNews.css";
 
-// /* Rectangle 15 */
-
-// position: absolute;
-// width: 269px;
-// height: 116px;
-// left: 0px;
-// top: 64px;
-
-// background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 65.5%);
-
 
 export function RecentNewsSlider(){
     const newsItems = [
@@ -29,30 +19,18 @@ export function RecentNewsSlider(){
     return(
         <div className="recent-news">
             <div className="news-header">
-                <h2>Recent news</h2>
-                <button style={{
-                    borderRadius: 15,
-                    width: 80,
-                    height: 40,
-                    backgroundColor: "white",
-                    border: "solid black",
-                }}>View all</button>
+                <h2 className="RecentNewsText">Recent news</h2>
+                <button id= "ViewAllButt">View all</button>
             </div>
             <div className="news-grid">
                 {newsItems.map((item, index) => (
                     <div key={index} className="news-card">
-                        <div className="image-container">
+                        <div className="ImageContainer">
                             <img src={item.src} alt={item.title} />
-                        </div>
-                        <div className="news-content">
+                        </div>  
+                        <div className="NewsContent">
                             <h3>{item.title}</h3>
-                            <button style={{
-                                borderRadius: 15,
-                                width: 80,
-                                height: 40,
-                                backgroundColor: "white",
-                                border: "solid black",
-                            }}>Read more</button>
+                            <button id="ReadMoreButt">Read more</button> 
                         </div>
                     </div>
                 ))}

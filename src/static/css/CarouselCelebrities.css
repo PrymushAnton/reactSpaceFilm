@@ -1,37 +1,4 @@
-/* .custom-prev-icon,
-.custom-next-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #ccc;
-    border-radius: 50%;
-}
-
-.custom-prev-icon:after {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    transform: rotate(-45deg);
-    margin-left: -2px;
-}
-
-.custom-next-icon:after {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    transform: rotate(45deg);
-    margin-right: -2px;
-} */
-
-.MostPopularCelebrities{
+.MostPopularCelebritiesText{
     border-left: 3px solid black;
     padding-left: 5px;
 }
@@ -45,8 +12,6 @@
     
 }
 
-
-
 .carousel-control-prev-icon{
     background-color: grey;
     border-radius: 50%;
@@ -54,4 +19,55 @@
     height: 50px !important;
     margin-right: 80% !important;
 
+}
+
+#MostPopularCelebritiesCont{
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1160px; 
+    position: relative;
+}
+
+#celebritiesdiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ViewAllButt{
+    border-radius: 15px;
+    width: 80px;
+    height: 40px;
+    background-color: white;
+    border: solid black;
+}
+
+#sliderPageDiv{
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+#celebrityDiv{
+    text-align: center;
+    width: 150px;
+}
+
+.img-thumbnail{
+    height: 124px;
+    width: 126px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 50% !important;
+}
+
+#rank{
+    font-size: 14px;
+    margin: 0;
+}
+
+#name{
+    font-size: 12px;
+    color: gray;
 }

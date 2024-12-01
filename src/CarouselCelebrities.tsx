@@ -48,52 +48,27 @@ export function CarouselCelebrities() {
     }
 
     return (
-        <div style={{ margin: "50px auto", padding: "20px", maxWidth: "80%", position: "relative" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+        <div id ="MostPopularCelebritiesCont">
+            <div id = "celebritiesdiv">
                 <div>
-                    <h2 className="MostPopularCelebrities">Most popular celebrities</h2>
+                    <h2 className="MostPopularCelebritiesText">Most popular celebrities</h2>
                     <h5>BY RANKING</h5>
                 </div>
-                <button style={{
-                    borderRadius: 15,
-                    width: 80,
-                    height: 40,
-                    backgroundColor: "white",
-                    border: "solid black",
-                }}>View all</button>
+                <button className="ViewAllButt">View all</button>
             </div>
             <Carousel
-                indicators={false}
-                nextLabel=""
-                prevLabel=""
                 interval={null}
                 nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" />}
                 prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon" />}
             >
                 {chunkedItems.map((chunk, index) => (
                     <Carousel.Item key={index}>
-                        <div style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            gap: "10px",
-                            padding: "10px"
-                        }}>
+                        <div id = "sliderPageDiv">
                             {chunk.map((item, idx) => (
-                                <div key={idx} style={{ textAlign: "center", width: "150px" }}>
-                                    <img
-                                        className="img-thumbnail"
-                                        style={{
-                                            height: "124px",
-                                            width: "126px",
-                                            objectFit: "cover",
-                                            marginBottom: "10px",
-                                            borderRadius: "50%"
-                                        }}
-                                        src={item.src}
-                                        alt={item.rank}
-                                    />
-                                    <h5 style={{ fontSize: "14px", margin: "0" }}>{item.rank}</h5>
-                                    <p style={{ fontSize: "12px", color: "gray" }}>{item.name}</p>
+                                <div id='celebrityDiv' key={idx}>
+                                    <img className="img-thumbnail" src={item.src} alt={item.rank}/>
+                                    <h5 id='rank'>{item.rank}</h5>
+                                    <p id ="name">{item.name}</p>
                                 </div>
                             ))}
                         </div>
@@ -102,4 +77,4 @@ export function CarouselCelebrities() {
             </Carousel>
         </div>
     );
-}/* stree news pc */
+}
