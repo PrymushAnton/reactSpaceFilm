@@ -1,0 +1,73 @@
+.MostPopularCelebritiesText{
+    border-left: 3px solid black;
+    padding-left: 5px;
+}
+
+.carousel-control-next-icon{
+    background-color: grey;
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    margin-left: 80% !important;
+    
+}
+
+.carousel-control-prev-icon{
+    background-color: grey;
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    margin-right: 80% !important;
+
+}
+
+#MostPopularCelebritiesCont{
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1160px; 
+    position: relative;
+}
+
+#celebritiesdiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ViewAllButt{
+    border-radius: 15px;
+    width: 80px;
+    height: 40px;
+    background-color: white;
+    border: solid black;
+}
+
+#sliderPageDiv{
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+#celebrityDiv{
+    text-align: center;
+    width: 150px;
+}
+
+.img-thumbnail{
+    height: 124px;
+    width: 126px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 50% !important;
+}
+
+#rank{
+    font-size: 14px;
+    margin: 0;
+}
+
+#name{
+    font-size: 12px;
+    color: gray;
+}
