@@ -9,7 +9,7 @@ export function App(){
             <Layout>
                 <Header></Header>
                 <Main></Main>
-                <Footer></Footer>
+                {/* <Footer></Footer> */}
             </Layout>
         </div>
     )

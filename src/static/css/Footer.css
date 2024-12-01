@@ -6,9 +6,10 @@
     /* padding: 0 160px; */
     gap: 160px;
     height: 60px;
-    width: 100vw;
-    margin-top: 700px;
-    bottom: 0;
+    width: calc(100vw - 17px);
+    /* margin-top: 700px; */
+    /* position: absolute; */
+    /* bottom: 0; */
     color: white;
 }
 

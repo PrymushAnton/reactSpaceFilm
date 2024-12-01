@@ -2,5 +2,11 @@
 
 body {
     font-family: 'Inter';
-    display: flex;
+    /* display: flex; */
+
+}
+
+.Maindiv{
+    /* width: 100vw; */
+    height: auto;
 }
