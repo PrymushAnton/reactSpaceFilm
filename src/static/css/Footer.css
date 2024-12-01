@@ -6,7 +6,7 @@
     /* padding: 0 160px; */
     gap: 160px;
     height: 60px;
-    width: 100vw;
+    width: calc(100vw - 17px);
     position: absolute;
     bottom: 0;
 }
