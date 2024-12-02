@@ -79,8 +79,8 @@ export function NowInTheatersCarousel() {
     return (
         <div className="NowInTheatersMainContainer">
             <div className="NowInTheatersContainer">
-                <h2 id="NowInTheatersText">Now in theaters</h2>
-                <button id="ViewAllButton">View all</button>
+                <h4 id="NowInTheatersText">Now in theaters</h4>
+                <button id="ViewAllButtonNowInTheaters">View all</button>
             </div>
             <Carousel indicators={false} nextIcon={<span className="carousel-control-next-icon" />} prevIcon={<span className="carousel-control-prev-icon" />}>
                 {sliceFilms.map((slice, index) => (

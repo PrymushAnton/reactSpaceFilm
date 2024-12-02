@@ -5,15 +5,14 @@ import { Footer } from './Footer'
 
 import { CarouselCelebrities } from './CarouselCelebrities'
 import { RecentNewsSlider } from './RecentNewsSlider'
+import { ComingSoonCarousel } from './ComingSoonCarousel'
 
 
 export function App(){
     return(
         <div>
             <Layout>
-                <Header></Header>
                 <Main></Main>
-                <Footer></Footer>
             </Layout>
         </div>
     )

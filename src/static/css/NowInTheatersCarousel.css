@@ -1,5 +1,9 @@
 .NowInTheatersMainContainer { 
-    width: 1000px; 
+    width: 100%;
+    margin-top: 80px;
+
+    grid-row: 3;
+    grid-column: 2 / span 5;
     /* position: relative;
     left: 465px;
     top: 675px; */
@@ -7,24 +11,29 @@
 
 .NowInTheatersContainer {
     display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 #NowInTheatersText {
-    border-left: 2px solid black;
+    border-left: 3px solid black;
     padding-left: 5px;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 
-#ViewAllButton {
+#ViewAllButtonNowInTheaters {
     border-radius: 15px;
-    width: 80px;
-    height: 20px;
+    width: 100px;
+    height: 30px;
     background-color: white;
     border: 1px solid black;
-    font-size: 12px;
+    /* font-size: 12px; */
+}
+
+#ViewAllButtonNowInTheaters:hover{
+    background-color: #1882FF;
+    transition: background-color ease-in-out 300ms;
 }
 
 .carousel-control-next-icon {
@@ -46,11 +55,14 @@
 }
 
 .NowInTheatersDiv {
-    display: flex;
-    gap: 30px;
-    padding: 10px;
-    display: flex;
+    /* display: flex;
     justify-content: center;
+    gap: 4.5%; */
+    padding: 10px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto auto auto auto auto auto;
 }
 
 .NowInTheatersInformationDiv {

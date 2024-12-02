@@ -1,17 +1,19 @@
+
+#footerDiv{
+    grid-row: 6;
+    grid-column: 1 / span 7;
+}
+
 #footer_main{
     background-color: #1882FF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 0 160px; */
-    gap: 160px;
     height: 60px;
-    width: calc(100vw - 17px);
-
-    /* margin-top: 700px; */
-    /* position: absolute; */
-    /* bottom: 0; */
+    width: 100%;
     color: white;
+
+    display: grid;
+    /* justify-items: center; */
+    align-items: center;
+    grid-template-columns: auto auto auto;
 }
 
 #svg{
@@ -19,8 +21,28 @@
     height: 14.09px;
 }
 
+#logoFooter{
+    margin: 0;
+    font-weight: bold;
+
+    /* grid-column: 1; */
+    justify-self: end;
+}
+
+#credits{
+    margin: 0;
+}
+
+#creditsDiv{
+    /* grid-column: 3; */
+    justify-self: center;
+}
+
 #icons{
     display: flex;
     justify-content: space-between;
     gap: 15px;
+
+    /* grid-column: 5; */
+    justify-self: start;
 }

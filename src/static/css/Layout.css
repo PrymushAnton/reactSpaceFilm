@@ -3,17 +3,3 @@
     padding: 0;
     box-sizing: border-box !important;
 }
-
-.Layout{
-    width: calc(100vw - 17px);
-
-    height: 100%;
-}
-
-/* body{
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: 100vw !important;
-    max-height: 100vh !important;
-} */
-

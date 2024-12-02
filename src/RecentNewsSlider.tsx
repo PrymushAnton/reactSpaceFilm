@@ -19,8 +19,8 @@ export function RecentNewsSlider(){
     return(
         <div className="recent-news">
             <div className="news-header">
-                <h2 className="RecentNewsText">Recent news</h2>
-                <button id= "ViewAllButt">View all</button>
+                <h4 className="RecentNewsText">Recent news</h4>
+                <button id= "ViewAllButtRecentNews">View all</button>
             </div>
             <div className="news-grid">
                 {newsItems.map((item, index) => (

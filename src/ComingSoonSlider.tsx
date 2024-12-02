@@ -56,7 +56,7 @@ export function ComingSoonSlider() {
                     }}>
                 {slides.map((slide, index) => (
                     <div
-                        className="slide"
+                        className="slide1"
                         key={index}
                         style={{
                         backgroundImage: `url(${slide.background})`,

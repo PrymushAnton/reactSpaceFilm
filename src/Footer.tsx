@@ -2,11 +2,11 @@ import "./static/css/Footer.css"
 
 export function Footer(){
     return(
-        <div>
+        <div id="footerDiv">
             <footer id = "footer_main">
-                <h1>SpaceFilm</h1>
-                <div>
-                    <p>© Movie title data and credits provided by <strong>IMDb</strong></p>
+                <h2 id="logoFooter">SpaceFilm</h2>
+                <div id="creditsDiv">
+                    <p id="credits">© Movie title data and credits provided by <strong>IMDb</strong></p>
                 </div>
                 <div id = "icons">
                     <a href="https://x.com"><svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.9812 1.8486H15.3707L10.1503 7.81524L16.2917 15.9345H11.483L7.71665 11.0102L3.40709 15.9345H1.0161L6.59989 9.5525L0.708374 1.8486H5.63916L9.04361 6.34959L12.9812 1.8486ZM12.1425 14.5042H13.4666L4.91969 3.20374H3.49883L12.1425 14.5042Z" fill="white"/></svg></a>

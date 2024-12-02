@@ -51,10 +51,10 @@ export function CarouselCelebrities() {
         <div id ="MostPopularCelebritiesCont">
             <div id = "celebritiesdiv">
                 <div>
-                    <h2 className="MostPopularCelebritiesText">Most popular celebrities</h2>
-                    <h5>BY RANKING</h5>
+                    <h4 className="MostPopularCelebritiesText">Most popular celebrities</h4>
+                    <h6 id='byRankingText'>BY RANKING</h6>
                 </div>
-                <button className="ViewAllButt">View all</button>
+                <button className="ViewAllButtCarouselCelebrities">View all</button>
             </div>
             <Carousel
                 interval={null}
