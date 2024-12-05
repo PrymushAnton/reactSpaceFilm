@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./static/css/ComingSoonSlider.css";
+import "./ComingSoonSlider.css";
 
 export function ComingSoonSlider() {
     const slides = [

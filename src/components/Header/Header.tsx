@@ -1,4 +1,4 @@
-import "./static/css/Header.css"
+import "./Header.css"
 
 export function Header() {
     return (

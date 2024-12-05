@@ -1,10 +1,10 @@
-import image1 from "./static/images/news/1.png";
-import image2 from "./static/images/news/2.png";
-import image3 from "./static/images/news/3.png";
-import image4 from "./static/images/news/4.png";
-import image5 from "./static/images/news/5.png";
-import image6 from "./static/images/news/6.png";
-import "./static/css/RecentNews.css";
+import image1 from "./images/1.png";
+import image2 from "./images/2.png";
+import image3 from "./images/3.png";
+import image4 from "./images/4.png";
+import image5 from "./images/5.png";
+import image6 from "./images/6.png";
+import "./RecentNewsSlider.css";
 
 
 export function RecentNewsSlider(){

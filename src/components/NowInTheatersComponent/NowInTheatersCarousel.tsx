@@ -1,25 +1,25 @@
 import Carousel from 'react-bootstrap/Carousel';
-import './static/css/NowInTheatersCarousel.css';
+import './NowInTheatersCarousel.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import RedOne from "./static/images/NowInTheaters/redOne.png";
-import Conclave from "./static/images/NowInTheaters/conclave.png";
-import bestChristmas from "./static/images/NowInTheaters/best christmas.png";
-import Heretic from "./static/images/NowInTheaters/heretic.png";
-import Juror2 from "./static/images/NowInTheaters/juror2.png";
-import Meanwhile from "./static/images/NowInTheaters/meanwhile.png";
-import Anora from "./static/images/NowInTheaters/anora.png";
-import Venom from "./static/images/NowInTheaters/venom.png";
-import christmasEve from "./static/images/NowInTheaters/christmas eve.png";
-import smallThings from "./static/images/NowInTheaters/small things.png";
-import Overlord from "./static/images/NowInTheaters/overlord.png";
-import pianoLesson from "./static/images/NowInTheaters/piano lesson.png";
-import aRealPain from "./static/images/NowInTheaters/a real pain.png";
-import Fanmade from "./static/images/NowInTheaters/fanmade.png";
-import weekendInTaipei from "./static/images/NowInTheaters/weekend in taipei.png";
-import Here from "./static/images/NowInTheaters/here.png";
-import Blitz from "./static/images/NowInTheaters/blitz.png";
-import theCarpenter from "./static/images/NowInTheaters/the carpenter.png";
+import RedOne from "./images/redOne.png";
+import Conclave from "./images/conclave.png";
+import bestChristmas from "./images/best christmas.png";
+import Heretic from "./images/heretic.png";
+import Juror2 from "./images/juror2.png";
+import Meanwhile from "./images/meanwhile.png";
+import Anora from "./images/anora.png";
+import Venom from "./images/venom.png";
+import christmasEve from "./images/christmas eve.png";
+import smallThings from "./images/small things.png";
+import Overlord from "./images/overlord.png";
+import pianoLesson from "./images/piano lesson.png";
+import aRealPain from "./images/a real pain.png";
+import Fanmade from "./images/fanmade.png";
+import weekendInTaipei from "./images/weekend in taipei.png";
+import Here from "./images/here.png";
+import Blitz from "./images/blitz.png";
+import theCarpenter from "./images/the carpenter.png";
 
 const filmsDescription = {
     RedOneDescription: "After Santa Claus -- Code Name: RED ONE -- is kidnapped, the North...",

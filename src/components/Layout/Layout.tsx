@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import "./static/css/Layout.css"
+import "./Layout.css"
 
 interface ILayoutProps {
     children : ReactNode

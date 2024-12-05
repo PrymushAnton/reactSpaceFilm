@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react"
-import "./static/css/ComingSoonCarousel.css"
+import "./ComingSoonCarousel.css"
 
 
 const slides = [

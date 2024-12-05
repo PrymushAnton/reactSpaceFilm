@@ -1,24 +1,24 @@
 import Carousel from 'react-bootstrap/Carousel';
-import './static/css/CarouselCelebrities.css';
+import './CarouselCelebrities.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import image1 from "./static/images/celebrities/1.png";
-import image2 from "./static/images/celebrities/2.png";
-import image3 from "./static/images/celebrities/3.png";
-import image4 from "./static/images/celebrities/4.png";
-import image5 from "./static/images/celebrities/5.png";
-import image6 from "./static/images/celebrities/6.png";
-import image7 from "./static/images/celebrities/7.png";
-import image8 from "./static/images/celebrities/8.png";
-import image9 from "./static/images/celebrities/9.png";
-import image10 from "./static/images/celebrities/10.png";
-import image11 from "./static/images/celebrities/11.png";
-import image12 from "./static/images/celebrities/12.png";
-import image13 from "./static/images/celebrities/13.png";
-import image14 from "./static/images/celebrities/14.png";
-import image15 from "./static/images/celebrities/15.png";
-import image16 from "./static/images/celebrities/16.png";
-import image17 from "./static/images/celebrities/17.png";
-import image18 from "./static/images/celebrities/18.png";
+import image1 from "./images/1.png";
+import image2 from "./images/2.png";
+import image3 from "./images/3.png";
+import image4 from "./images/4.png";
+import image5 from "./images/5.png";
+import image6 from "./images/6.png";
+import image7 from "./images/7.png";
+import image8 from "./images/8.png";
+import image9 from "./images/9.png";
+import image10 from "./images/10.png";
+import image11 from "./images/11.png";
+import image12 from "./images/12.png";
+import image13 from "./images/13.png";
+import image14 from "./images/14.png";
+import image15 from "./images/15.png";
+import image16 from "./images/16.png";
+import image17 from "./images/17.png";
+import image18 from "./images/18.png";
 
 export function CarouselCelebrities() {
     const items = [

@@ -1,13 +1,12 @@
-import { CarouselCelebrities } from "./CarouselCelebrities";
-import { ComingSoonSlider } from "./ComingSoonSlider";
-import { NowInTheatersCarousel } from "./NowInTheatersCarousel"
-import { RecentNewsSlider } from "./RecentNewsSlider";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { CarouselCelebrities } from "../CarouselCelebrities/CarouselCelebrities";
+import { ComingSoonSlider } from "../ComingSoonSlider/ComingSoonSlider";
+import { NowInTheatersCarousel } from "../NowInTheatersComponent/NowInTheatersCarousel"
+import { RecentNewsSlider } from "../RecentNewsSlider/RecentNewsSlider"
+import { Footer } from "../Footer/Footer";
+import { Header } from "../Header/Header";
 
-import { ComingSoonCarousel } from "./ComingSoonCarousel";
 
-import "./static/css/Main.css";
+import "./Main.css";
 
 
 export function Main() {
