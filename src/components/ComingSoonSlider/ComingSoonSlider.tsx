@@ -48,7 +48,6 @@ export function ComingSoonSlider() {
                 </div>
             </div>
             <div className="slider-container">
-                
                 <div
                     className="slides"
                     style={{
