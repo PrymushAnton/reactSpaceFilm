@@ -1,0 +1,119 @@
+.NowInTheatersMainContainer { 
+    width: 100%;
+    margin-top: 80px;
+
+    grid-row: 3;
+    grid-column: 2 / span 5;
+    /* position: relative;
+    left: 465px;
+    top: 675px; */
+}
+
+.NowInTheatersContainer {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#NowInTheatersText {
+    border-left: 3px solid black;
+    padding-left: 5px;
+    /* font-size: 16px; */
+}
+
+#ViewAllButtonNowInTheaters {
+    border-radius: 15px;
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    /* font-size: 12px; */
+}
+
+#ViewAllButtonNowInTheaters:hover{
+    background-color: #1882FF;
+    transition: background-color ease-in-out 300ms;
+}
+
+.carousel-control-next-icon {
+    background-color: grey;
+    border-radius: 50%;
+    width: 50px !important;
+    height: 30px !important;
+    margin-left: 100% !important;
+    padding: 20px;
+}
+
+.carousel-control-prev-icon {
+    background-color: grey;
+    border-radius: 50%;
+    width: 50px !important;
+    height: 30px !important;
+    margin-right: 100% !important;
+    padding: 20px;
+}
+
+.NowInTheatersDiv {
+    /* display: flex;
+    justify-content: center;
+    gap: 4.5%; */
+    padding: 10px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+.NowInTheatersInformationDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 128px;
+}
+
+#imgFilm {
+    height: 184px;
+    width: 128px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#filmTitle {
+    font-size: 12px;
+    margin: 0;
+    max-width: 128px;
+    text-align: left;
+    line-height: 1.2; 
+    height: 34px; 
+    overflow: hidden; 
+}
+
+.ratingNowInTheaters {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 15px;
+}
+
+#filmStars {
+    font-size: 16px;
+    color: #FFD700; 
+    margin: 0 0 5px;
+}
+
+#percentText {
+    font-size: 12px;
+    color: #555;
+    margin: 0 0 4px;
+}
+
+#descriptionFilm {
+    font-size: 10px;
+    color: gray;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 128px;
+}

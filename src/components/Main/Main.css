@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter';
+    /* display: flex; */
+
+}
+
+main{
+    /* width: 100vw; */
+    height: auto;
+    /* padding-top: 80px; */
+
+    display: grid;
+    /* grid-template-columns: 13% 12% 30% 32% 13%; */
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+    grid-template-rows: auto auto auto auto auto auto;
+    /* row-gap: 80px; */
+    
+    /* align-items: center; */
+
+}
+
+
+@media (max-width: 1024px){
+    main {
+        grid-template-columns: 10% auto auto auto auto auto 10%;
+    }
+}

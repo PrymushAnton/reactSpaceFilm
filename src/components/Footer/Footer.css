@@ -1,0 +1,48 @@
+
+#footerDiv{
+    grid-row: 6;
+    grid-column: 1 / span 7;
+}
+
+#footer_main{
+    background-color: #1882FF;
+    height: 60px;
+    width: 100%;
+    color: white;
+
+    display: grid;
+    /* justify-items: center; */
+    align-items: center;
+    grid-template-columns: auto auto auto;
+}
+
+#svg{
+    width: 15.58px;
+    height: 14.09px;
+}
+
+#logoFooter{
+    margin: 0;
+    font-weight: bold;
+
+    /* grid-column: 1; */
+    justify-self: end;
+}
+
+#credits{
+    margin: 0;
+}
+
+#creditsDiv{
+    /* grid-column: 3; */
+    justify-self: center;
+}
+
+#icons{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    /* grid-column: 5; */
+    justify-self: start;
+}

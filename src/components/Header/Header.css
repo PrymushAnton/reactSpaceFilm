@@ -1,0 +1,76 @@
+.headerDiv{
+    grid-row: 1;
+    grid-column: 1 / span 7;
+}
+
+header {
+    background-color: #1882FF;
+    display: grid;
+    /* grid-template-columns: 13% 15% 27% 32% 13%; */
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+    align-items: center;
+    height: 60px;
+    /* position: absolute;
+    top: 0;
+    right: 0; */
+    width: 100%;
+    color: white;
+    margin-bottom: 20px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+#logoHeader {
+    grid-column: 2;
+    margin: 0;
+    font-weight: bold;
+    justify-self: start;
+}
+
+#catalogNews {
+    grid-column: 4;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+
+#inputSearch {
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 10px;
+    border: 0px;
+    outline: 0
+}
+
+#loginButtonHeader{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#searchLogin{
+    grid-column: 6;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    justify-self: end;
+    min-width: 0;
+    min-height: 0;
+}
+
+
+@media (max-width: 1024px){
+    header {
+        grid-template-columns: 10% auto auto auto auto auto 10%;
+    }
+}
