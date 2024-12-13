@@ -64,7 +64,9 @@ const films = [
     { src: theCarpenter, title: "The Carpenter", description: filmsDescription.theCarpenterDescription, percentage: 80 },
 ];
 
+
 export function getStarsFromPercentage(percentage: any) {
+
     const stars = Math.floor(percentage / 20); 
     const hasHalfStar = percentage % 20 >= 10; 
     return "★".repeat(stars) + (hasHalfStar ? "☆" : "") + "☆".repeat(5 - stars - (hasHalfStar ? 1 : 0));
