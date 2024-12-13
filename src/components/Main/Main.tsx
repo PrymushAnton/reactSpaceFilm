@@ -5,7 +5,7 @@ import { NowInTheatersCarousel } from "../NowInTheatersComponent/NowInTheatersCa
 import { RecentNewsSlider } from "../RecentNewsSlider/RecentNewsSlider"
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
-
+import { FilmsFilter } from "../FilmsFilter/FilmsFilter";
 
 import "./Main.css";
 
@@ -16,6 +16,7 @@ export function Main() {
             <main>
                 <Header></Header>
                 {/* <ComingSoonSlider></ComingSoonSlider> */}
+                <FilmsFilter></FilmsFilter>
                 <ComingSoonSliderNew></ComingSoonSliderNew>
                 <NowInTheatersCarousel></NowInTheatersCarousel>
                 <CarouselCelebrities></CarouselCelebrities>
