@@ -6,8 +6,12 @@ import { RecentNewsSlider } from "../RecentNewsSlider/RecentNewsSlider"
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
+import { FilterFilms } from "../FilterFilms/FilterFilms";
+
+
 
 import "./Main.css";
+
 
 
 export function Main() {
@@ -20,10 +24,14 @@ export function Main() {
                 <NowInTheatersCarousel></NowInTheatersCarousel>
                 <CarouselCelebrities></CarouselCelebrities>
                 <RecentNewsSlider></RecentNewsSlider>
+
+                {/* <FilterFilms></FilterFilms> */}
+
                 {/* <ComingSoonCarousel></ComingSoonCarousel> */}
                 <Footer></Footer>
             </main>
             
         </div>
     )
-  };
+};
+

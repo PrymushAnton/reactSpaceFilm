@@ -9,7 +9,6 @@
 .slides{
     display: flex;
     transition: transform ease-out 700ms;
-
 }
 
 .bgImageComingSoon{

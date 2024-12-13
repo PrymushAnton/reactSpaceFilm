@@ -1,6 +1,5 @@
-import Carousel from 'react-bootstrap/Carousel';
-import './NowInTheatersCarousel.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./FilterFilms.css"
+import { getStarsFromPercentage } from "../NowInTheatersComponent/NowInTheatersCarousel"
 
 import RedOne from "./images/redOne.png";
 import Conclave from "./images/conclave.png";
@@ -64,45 +63,30 @@ const films = [
     { src: theCarpenter, title: "The Carpenter", description: filmsDescription.theCarpenterDescription, percentage: 80 },
 ];
 
+export function FilterFilms() {
 
-export function getStarsFromPercentage(percentage: any) {
-
-    const stars = Math.floor(percentage / 20); 
-    const hasHalfStar = percentage % 20 >= 10; 
-    return "★".repeat(stars) + (hasHalfStar ? "☆" : "") + "☆".repeat(5 - stars - (hasHalfStar ? 1 : 0));
-}
-
-export function NowInTheatersCarousel() {
     const sliceFilms = [];
     for (let i = 0; i < films.length; i += 6) {
         sliceFilms.push(films.slice(i, i + 6));
     }
 
     return (
-        <div className="NowInTheatersMainContainer">
-            <div className="NowInTheatersContainer">
-                <h4 id="NowInTheatersText">Now in theaters</h4>
-                <button id="ViewAllButtonNowInTheaters">View all</button>
-            </div>
-            <Carousel indicators={false} nextIcon={<span className="carousel-control-next-icon" />} prevIcon={<span className="carousel-control-prev-icon" />}>
-                {sliceFilms.map((slice, index) => (
-                    <Carousel.Item key={index}>
-                        <div className="NowInTheatersDiv">
-                            {slice.map((item, idx) => (
-                                <div className="NowInTheatersInformationDiv" key={idx}>
-                                    <img id="imgFilm" src={item.src} alt={item.title} />
-                                    <h5 id="filmTitle">{item.title}</h5>
-                                    <div className='ratingNowInTheaters'>
-                                        <p id="filmStars">{getStarsFromPercentage(item.percentage)}</p>
-                                        <p id="percentText">{item.percentage}%</p>
-                                    </div>
-                                    <p id="descriptionFilm">{item.description}</p>
+        <div className="FilterFilmsMainDiv">
+            {sliceFilms.map((slice, index) => (
+                    <div className="FilterFilmsDiv">
+                        {slice.map((item, idx) => (
+                            <div className="FilterFilmsInformationDiv" key={idx}>
+                                <img id="imgFilm" src={item.src} alt={item.title} />
+                                <h5 id="filmTitle">{item.title}</h5>
+                                <div className='ratingFilterFilms'>
+                                    <p id="filmStars">{getStarsFromPercentage(item.percentage)}</p>
+                                    <p id="percentText">{item.percentage}%</p>
                                 </div>
-                            ))}
-                        </div>
-                    </Carousel.Item>
+                                <p id="descriptionFilm">{item.description}</p>
+                            </div>
+                        ))}
+                    </div>
                 ))}
-            </Carousel>
         </div>
-    );
+    )
 }
