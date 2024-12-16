@@ -1,5 +1,6 @@
 import "./FilmsFilter.css"
 
+
 const genres = [
     { genre: "Сімейні"},
     { genre: "Фентезі"},
@@ -27,25 +28,33 @@ const genres = [
     { genre: "Закордонні"},
 ]
 
+
+interface IFilmsDivProps{
+    setFunction: Function
+}
+
 export function FilmsFilter(){
+    
     return(
         <div id = "filters-div">
             <div id = "filters-header">
-                <h2>Пошук</h2>
+                <h2 className="filterHeader">Пошук</h2>
                 <div id="search-div">
                     <input type="text" name="" id="inputSearch" placeholder="Search"/>
                 </div>
             </div>
 
             <div id="filters-filters">
-                <h2>Жанр</h2>
+                <h2 className="filterHeader">Жанр</h2>
                 <div id="genre">
                 {genres.map((genre, index) => (
                         <div className="genre-div" key={index}>
                             <div id="checkbox-div">
-                                <input type="checkbox" name={genre.genre} className="checkbox"/>
+                                <input type="checkbox" name={genre.genre} className="checkbox" onChange={(event) => {
+                                    console.log("kljljkljkljkljkl")
+                                }}/>
                             </div>
-                            <p>{genre.genre}</p>
+                            <p className="genre">{genre.genre}</p>
                         </div>
                     ))}
                 </div>

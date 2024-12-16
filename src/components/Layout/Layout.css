@@ -12,15 +12,6 @@
     grid-template-rows: 60px auto 60px;
 }
 
-#headerPass{
-    grid-row: 1;
-    grid-column: 1 / span 7;
-}
 
 
 
-@media (max-width: 1024px){
-    .Layout {
-        grid-template-columns: 10% auto auto auto auto auto 10%;
-    }
-}

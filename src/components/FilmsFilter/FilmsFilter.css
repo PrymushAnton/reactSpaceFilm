@@ -2,6 +2,8 @@
     background-color: #267BDF;
     border-radius: 15px;
     padding: 10px;
+
+    grid-column: 2;
 }
 
 #filters-header{
@@ -9,13 +11,13 @@
     padding: 10px;
 }
 
-h2{
+.filterHeader{
     color: white;
     font-size: 22px;
     font-weight: bold;
 }
 
-p{
+.genre{
     color: white;
 }
 
