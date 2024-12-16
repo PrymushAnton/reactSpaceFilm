@@ -1,5 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box !important;
+    font-family: 'Inter';
+}
+
+.Layout{
+    display: grid;
+    /* grid-template-rows: auto auto auto auto auto auto; */
+    grid-template-rows: 60px auto 60px;
+}
+
+#headerPass{
+    grid-row: 1;
+    grid-column: 1 / span 7;
+}
+
+
+
+@media (max-width: 1024px){
+    .Layout {
+        grid-template-columns: 10% auto auto auto auto auto 10%;
+    }
 }

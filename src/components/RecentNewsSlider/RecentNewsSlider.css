@@ -92,9 +92,13 @@
     height: 30px;
     background-color: white;
     border: 1px solid black;
+
+    transition: 300ms;
+
 }
 
 #ReadMoreButt:hover{
     background-color: #1882FF;
     transition: background-color ease-in-out 300ms;
+    color: white;
 }

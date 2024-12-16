@@ -5,26 +5,38 @@ import { NowInTheatersCarousel } from "../NowInTheatersComponent/NowInTheatersCa
 import { RecentNewsSlider } from "../RecentNewsSlider/RecentNewsSlider"
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
+
 import { FilmsFilter } from "../FilmsFilter/FilmsFilter";
 
+
+import { FilterFilms } from "../FilterFilms/FilterFilms";
+
+
 import "./Main.css";
+import { ReactNode } from "react";
+
+interface ILayoutProps {
+    children : ReactNode
+}
 
 
-export function Main() {
+
+
+export function Main(props: ILayoutProps) {
     return (
-        <div>
-            <main>
-                <Header></Header>
-                {/* <ComingSoonSlider></ComingSoonSlider> */}
-                <FilmsFilter></FilmsFilter>
-                <ComingSoonSliderNew></ComingSoonSliderNew>
-                <NowInTheatersCarousel></NowInTheatersCarousel>
-                <CarouselCelebrities></CarouselCelebrities>
-                <RecentNewsSlider></RecentNewsSlider>
-                {/* <ComingSoonCarousel></ComingSoonCarousel> */}
-                <Footer></Footer>
-            </main>
+
+
+        <main>
+
+            {/* <ComingSoonSliderNew></ComingSoonSliderNew>
+            <NowInTheatersCarousel></NowInTheatersCarousel>
+            <CarouselCelebrities></CarouselCelebrities>
+            <RecentNewsSlider></RecentNewsSlider> */}
+            {props.children}
+
+        </main>
+
             
-        </div>
     )
-  };
+};
+
