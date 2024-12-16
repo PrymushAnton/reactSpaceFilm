@@ -6,8 +6,10 @@ import { RecentNewsSlider } from "../RecentNewsSlider/RecentNewsSlider"
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
-import { FilterFilms } from "../FilterFilms/FilterFilms";
+import { FilmsFilter } from "../FilmsFilter/FilmsFilter";
 
+
+import { FilterFilms } from "../FilterFilms/FilterFilms";
 
 
 import "./Main.css";
@@ -23,6 +25,7 @@ interface ILayoutProps {
 export function Main(props: ILayoutProps) {
     return (
 
+
         <main>
 
             {/* <ComingSoonSliderNew></ComingSoonSliderNew>
@@ -32,6 +35,7 @@ export function Main(props: ILayoutProps) {
             {props.children}
 
         </main>
+
             
     )
 };

@@ -1,0 +1,30 @@
+#filters-div{
+    background-color: #267BDF;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#filters-header{
+    border-bottom: 2px solid white;
+    padding: 10px;
+}
+
+h2{
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+p{
+    color: white;
+}
+
+.genre-div{
+    display: flex;
+    align-content: center;
+    gap: 3px;
+}
+
+input[type="checkbox"]:checked{
+    background-color: #1882FF;
+}
