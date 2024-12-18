@@ -4,7 +4,6 @@ import { CarouselCelebrities } from "../CarouselCelebrities/CarouselCelebrities"
 import { ComingSoonSliderNew } from "../ComingSoonSliderNew/ComingSoonSliderNew";
 import { NowInTheatersCarousel } from "../NowInTheatersComponent/NowInTheatersCarousel"
 import { RecentNewsSlider } from "../RecentNewsSlider/RecentNewsSlider"
-import { Genre } from "../Genre/Genre";
 
 export function MainList(){
 

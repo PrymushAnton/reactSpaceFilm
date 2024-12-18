@@ -1,5 +1,5 @@
 
-import { FilterFilms } from "../FilterFilms/FilterFilms"
+import { FilterFilms } from "../CatalogFilms/CatalogFilms"
 import { FilmsFilter } from "../FilmsFilter/FilmsFilter"
 
 import "./CatalogList.css"
@@ -24,7 +24,11 @@ import weekendInTaipei from "./images/weekend in taipei.png";
 import Here from "./images/here.png";
 import Blitz from "./images/blitz.png";
 import theCarpenter from "./images/the carpenter.png";
-import { Genre } from "../Genre/Genre";
+
+
+import { OneItem } from "../OneItem/OneItem";
+
+import { Genres } from "../Genres/Genres";
 
 const filmsDescription = {
     RedOneDescription: "After Santa Claus -- Code Name: RED ONE -- is kidnapped, the North...",
@@ -49,24 +53,24 @@ const filmsDescription = {
 
 
 const films = [
-    { category: ["fantasy", "action", "detective", "adventure", "comedy"], src: RedOne, title: "Red One", description: filmsDescription.RedOneDescription, percentage: 87 },
-    { category: ["detective"], src: Conclave, title: "Conclave", description: filmsDescription.ConclaveDescription, percentage: 75 },
-    { category: ["drama", "comedy"], src: bestChristmas, title: "The Best Christmas Pageant Ever", description: filmsDescription.bestChristmasDescription, percentage: 95 },
-    { category: ["thriller", "horror"], src: Heretic, title: "Heretic", description: filmsDescription.HereticDescription, percentage: 50 },
-    { category: ["thriller"], src: Juror2, title: "Juror #2", description: filmsDescription.Juror2Description, percentage: 82 },
-    { category: ["drama", "fantasy"], src: Meanwhile, title: "Meanwhile on Earth", description: filmsDescription.MeanwhileDescription, percentage: 92 },
-    { category: ["drama", "comedy"], src: Anora, title: "Anora", description: filmsDescription.AnoraDescription, percentage: 66 },
-    { category: [""], src: Venom, title: "Venom: The Last Dance", description: filmsDescription.VenomDescription, percentage: 78 },
-    { category: ["drama", "comedy"], src: christmasEve, title: "Christmas Eve in Miller's Point", description: filmsDescription.christmasEveDescription, percentage: 88 },
-    { category: ["drama", "historical"], src: smallThings, title: "Small Things Like These", description: filmsDescription.smallThingsDescription, percentage: 80 },
-    { category: ["fantasy", "adventure"], src: Overlord, title: "Overlord: The Sacred Kingdom", description: filmsDescription.OverlordDescription, percentage: 60 },
-    { category: ["drama"], src: pianoLesson, title: "The Piano Lesson", description: filmsDescription.pianoLessonDescription, percentage: 50 },
-    { category: ["drama", "comedy"], src: aRealPain, title: "A Real Pain", description: filmsDescription.aRealPainDescription, percentage: 40 },
-    { category: ["documental"], src: Fanmade, title: "Fanmade: ENHYPEN", description: filmsDescription.FanmadeDescripton, percentage: 77 },
-    { category: [""], src: weekendInTaipei, title: "Weekend in Taipei", description: filmsDescription.weekendInTaipeiDescription, percentage: 90 },
-    { category: ["drama"], src: Here, title: "Here", description: filmsDescription.HereDescription, percentage: 85 },
-    { category: ["drama", "historical"], src: Blitz, title: "Blitz", description: filmsDescription.BlitzDescription, percentage: 70 },
-    { category: ["drama"], src: theCarpenter, title: "The Carpenter", description: filmsDescription.theCarpenterDescription, percentage: 80 },
+    {categories: [["fantasy", "action", "detective", "adventure", "comedy"]], src: RedOne, title: "Red One", description: filmsDescription.RedOneDescription, percentage: 87 },
+    {categories: [["detective"]], src: Conclave, title: "Conclave", description: filmsDescription.ConclaveDescription, percentage: 75 },
+    {categories: [["drama", "comedy"]], src: bestChristmas, title: "The Best Christmas Pageant Ever", description: filmsDescription.bestChristmasDescription, percentage: 95 },
+    {categories: [["thriller", "horror"]], src: Heretic, title: "Heretic", description: filmsDescription.HereticDescription, percentage: 50 },
+    {categories: [["thriller"]], src: Juror2, title: "Juror #2", description: filmsDescription.Juror2Description, percentage: 82 },
+    {categories: [["drama", "fantasy"]], src: Meanwhile, title: "Meanwhile on Earth", description: filmsDescription.MeanwhileDescription, percentage: 92 },
+    {categories: [["drama", "comedy"]], src: Anora, title: "Anora", description: filmsDescription.AnoraDescription, percentage: 66 },
+    {categories: [["action", "adventure", "thriller"]], src: Venom, title: "Venom: The Last Dance", description: filmsDescription.VenomDescription, percentage: 78 },
+    {categories: [["drama", "comedy"]], src: christmasEve, title: "Christmas Eve in Miller's Point", description: filmsDescription.christmasEveDescription, percentage: 88 },
+    {categories: [["drama", "historical"]], src: smallThings, title: "Small Things Like These", description: filmsDescription.smallThingsDescription, percentage: 80 },
+    {categories: [["fantasy", "adventure"]], src: Overlord, title: "Overlord: The Sacred Kingdom", description: filmsDescription.OverlordDescription, percentage: 60 },
+    {categories: [["drama"]], src: pianoLesson, title: "The Piano Lesson", description: filmsDescription.pianoLessonDescription, percentage: 50 },
+    {categories: [["drama", "comedy"]], src: aRealPain, title: "A Real Pain", description: filmsDescription.aRealPainDescription, percentage: 40 },
+    {categories: [["documental"]], src: Fanmade, title: "Fanmade: ENHYPEN", description: filmsDescription.FanmadeDescripton, percentage: 77 },
+    {categories: [["action", "thriller"]], src: weekendInTaipei, title: "Weekend in Taipei", description: filmsDescription.weekendInTaipeiDescription, percentage: 90 },
+    {categories: [["drama"]], src: Here, title: "Here", description: filmsDescription.HereDescription, percentage: 85 },
+    {categories: [["drama", "historical"]], src: Blitz, title: "Blitz", description: filmsDescription.BlitzDescription, percentage: 70 },
+    {categories: [["drama"]], src: theCarpenter, title: "The Carpenter", description: filmsDescription.theCarpenterDescription, percentage: 80 },
 ];
 
 
@@ -75,16 +79,37 @@ export function CatalogList(){
 
     
     const [filteredFilms, setFilteredFilms] = useState(0)
-    const [categories, setCategories] = useState<string[]>([])
-    
+
+    let maxValue: number = 0;
+    for (let i = 0; i < films.length; i++) {
+        if (films[i].categories.length > maxValue) {
+            maxValue = films[i].categories.length
+        }
+    }
+
+    let arrayOfCategories = []
+
+
+    for (let i = 0; i < maxValue; i++){
+        arrayOfCategories.push([])
+        console.log("i", i)
+    }
+    console.log(arrayOfCategories)
+
+    const [categories, setCategories] = useState<string[][]>(arrayOfCategories)
+
+
 
     return (
         <div id="CatalogList">
             {/* <FilmsFilter></FilmsFilter>
             <FilterFilms films={films}></FilterFilms> */}
-            <Genre name="action" categories={categories} setFunction={setCategories}></Genre>
-            <Genre name="fantasy" categories={categories} setFunction={setCategories}></Genre>
-            <Genre name="comedy" categories={categories} setFunction={setCategories}></Genre>
+            
+
+            <Genres films={films} id={0} setFunction={setCategories} categories={categories}></Genres>
+
+        
+        
         </div>
     )
 }

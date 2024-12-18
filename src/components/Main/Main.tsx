@@ -9,7 +9,7 @@ import { Header } from "../Header/Header";
 import { FilmsFilter } from "../FilmsFilter/FilmsFilter";
 
 
-import { FilterFilms } from "../FilterFilms/FilterFilms";
+import { FilterFilms } from "../CatalogFilms/CatalogFilms";
 
 
 import "./Main.css";

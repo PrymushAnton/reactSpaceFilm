@@ -1,8 +1,16 @@
 import "./FilterFilms.css"
 import { getStarsFromPercentage } from "../NowInTheatersComponent/NowInTheatersCarousel"
-import { IFilm } from "../../hooks/useCategory";
+// import { IFilm } from "../../hooks/useCategory";
 
 
+
+interface IFilm{
+    category: string,
+    title: string,
+    src: string,
+    percentage: number,
+    description: string,
+}
 
 interface IFilmsProps{
     films: IFilm[]
