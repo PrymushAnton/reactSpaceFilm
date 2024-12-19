@@ -7,5 +7,10 @@
 
     margin-top: 20px;
 
+    display: grid;
     grid-template-columns: 13% auto auto auto auto auto 13%;
+    grid-template-rows: auto auto auto auto auto auto;
+    
+
+    /* grid-template-columns: 13% auto auto auto auto auto 13%; */
 }

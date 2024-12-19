@@ -16,7 +16,7 @@ export function Layout(props: ILayoutProps){
         <div className="Layout">
             {/* {props.children} */}
             <Header></Header>
-            <div id="headerPass"></div>
+            {/* <div id="headerPass"></div> */}
             <Main>
                 <Outlet />
             </Main>
