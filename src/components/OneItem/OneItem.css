@@ -1,0 +1,19 @@
+
+
+.genreDiv{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 5px;
+}
+
+.labelCategory{
+    color: white;
+}
+
+.checkbox{
+
+    border: 1px solid red !important;
+    border-radius: 5px !important;
+    height: max-content;
+}

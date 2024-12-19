@@ -1,6 +1,7 @@
 
 import { CatalogFilms } from "../CatalogFilms/CatalogFilms"
 import { FilmsFilter } from "../FilmsFilter/FilmsFilter"
+import { FiltersDiv } from "../FiltersDiv/FiltersDiv"
 
 import "./CatalogList.css"
 import { useState } from "react"
@@ -26,9 +27,8 @@ import Blitz from "./images/blitz.png";
 import theCarpenter from "./images/the carpenter.png";
 
 
-import { OneItem } from "../OneItem/OneItem";
 
-import { Genres } from "../Genres/Genres";
+
 
 const filmsDescription = {
     RedOneDescription: "After Santa Claus -- Code Name: RED ONE -- is kidnapped, the North...",
@@ -78,7 +78,13 @@ export interface ICategories{
     [key: string]: string[]
 }
 
-
+export interface IFilm{
+    src: string,
+    title: string,
+    description: string,
+    categories: ICategories,
+    percentage: number,
+}
 
 
 
@@ -112,9 +118,11 @@ export function CatalogList(){
 
 
             {/* setFunction={setFilteredFilms} filteredFilms={filteredFilms} */}
-            <Genres films={films} keyOfObject={"genres"} setCategories={setCategories} categories={categories} setFilteredFilms={setFilteredFilms} filteredFilms={filteredFilms}></Genres>
+            {/* <SearchFilmCatalog></SearchFilmCatalog> */}
+            
+            <FiltersDiv films={films} keyOfObject={'genres'} setCategories={setCategories} categories={categories} setFilteredFilms={setFilteredFilms} filteredFilms={filteredFilms}></FiltersDiv>
             <CatalogFilms filteredFilms={filteredFilms} ></CatalogFilms>
-        
+            
         </div>
     )
 }

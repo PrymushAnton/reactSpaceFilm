@@ -9,5 +9,5 @@
 
     
     display: grid;
-    grid-template-columns: 13% auto auto 13%;
+    grid-template-columns: 13% 16% 58% 13%;
 }

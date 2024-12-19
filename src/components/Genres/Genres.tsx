@@ -1,14 +1,9 @@
 import { OneItem } from "../OneItem/OneItem"
-import { ICategories } from "../CatalogList/CatalogList"
+import { ICategories, IFilm } from "../CatalogList/CatalogList"
+
+import "./Genres.css"
 
 
-interface IFilm{
-    src: string,
-    title: string,
-    description: string,
-    categories: ICategories,
-    percentage: number,
-}
 
 interface IGenresProps{
     films: IFilm[],
@@ -37,7 +32,7 @@ export function Genres(props: IGenresProps){
 
     return (
         <div className="genresContainer">
-            <h2>Genres</h2>
+            <h2 id="genresTitle">Genres</h2>
             {categoriesArray.map((item) => { 
                 return <OneItem name={item} keyOfObject={props.keyOfObject} categories={props.categories} setCategories={props.setCategories} setFilteredFilms={props.setFilteredFilms} filteredFilms={props.filteredFilms} films={props.films}></OneItem>
             })}

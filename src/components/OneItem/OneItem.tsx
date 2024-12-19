@@ -2,16 +2,10 @@
 
 import { useState } from "react"
 import "./OneItem.css"
-import { ICategories } from "../CatalogList/CatalogList"
+import { ICategories, IFilm } from "../CatalogList/CatalogList"
 
 
-interface IFilm{
-    src: string,
-    title: string,
-    description: string,
-    categories: ICategories,
-    percentage: number,
-}
+
 
 interface IGenreProps{
     name: string,
@@ -63,11 +57,8 @@ export function OneItem(props:IGenreProps){
 
     return (
         <div className="genreDiv">
-            <div id="checkboxDiv">
-            
-                <input type="checkbox" className="checkboxInput" onChange={(event) => {conditionChecked(checked)}}/>
-            </div>
-            <p className="genreName">{props.name}</p>
+            <input type="checkbox" id={props.name + "Checkbox"} className="checkbox" onChange={(event) => {conditionChecked(checked)}}/>
+            <label htmlFor={props.name + "Checkbox"} className="labelCategory">{props.name}</label>
         </div>
     )
 }
