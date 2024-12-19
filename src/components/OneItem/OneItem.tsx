@@ -2,54 +2,62 @@
 
 import { useState } from "react"
 import "./OneItem.css"
+import { ICategories } from "../CatalogList/CatalogList"
 
+
+interface IFilm{
+    src: string,
+    title: string,
+    description: string,
+    categories: ICategories,
+    percentage: number,
+}
 
 interface IGenreProps{
     name: string,
-    categories: string[][],
-    setFunction: Function,
-    id: number,
+    keyOfObject: string,
+    setCategories: Function,
+    categories: ICategories,
+    setFilteredFilms: Function,
+    filteredFilms: IFilm[],
+    films: IFilm[]
 }
 
 export function OneItem(props:IGenreProps){
-
-
-    // console.log(0, props.categories)
     
     const [checked, setChecked] = useState(false)
 
-    // function conditionChecked(checkStatus: boolean){
-    //     if (checkStatus){
-    //         setChecked(false)
-    //         // props.categories.filter((el) => el != props.name)
-    //         const index = props.categories[props.id_in_array].indexOf(props.name)
-    //         props.categories[props.id_in_array].splice(index, 1)
-    //         console.log(1, props.categories)
-    //         props.setFunction(props.categories)
-    //         // props.setFunction(10)
-    //     } else {
-    //         setChecked(true)
-    //         props.categories[props.id_in_array].push(props.name)
-    //         console.log(2, props.categories)
-    //         props.setFunction(props.categories)
-    //         // props.setFunction(5)
-    //     }
-    // }
-    // console.log(props.categories)
+
     function conditionChecked(checkStatus: boolean){
         if (checkStatus){
             setChecked(false)
-            props.categories[props.id].push(props.name)
-            const index = props.categories[props.id].indexOf(props.name)
-            props.categories[props.id].splice(index, 1)
-            props.setFunction(props.categories)
+            // props.categories[props.id].push(props.name)
+            const index = props.categories[props.keyOfObject].indexOf(props.name)
+            props.categories[props.keyOfObject].splice(index, 1)
+            props.setCategories(props.categories)
             
+
+
         } else {
             setChecked(true)
-            props.categories[props.id].push(props.name)
-            props.setFunction(props.categories)
+            props.categories[props.keyOfObject].push(props.name)
+            props.setCategories(props.categories)
+
+            
+           
+            
         }
+        const filteredFilms = props.films.filter((film) => {
+            return Object.keys(props.categories).every((filterKey) => {
+                const filterValues = props.categories[filterKey]
+                const filmValues = film.categories[filterKey]
+                // if (!filmValues) return false
+                return filterValues.every((value) => filmValues.includes(value));
+            })
+        })
+        props.setFilteredFilms(filteredFilms)
         console.log(props.categories)
+        console.log(filteredFilms)
     }
 
 

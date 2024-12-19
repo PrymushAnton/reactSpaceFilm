@@ -1,11 +1,11 @@
-import "./FilterFilms.css"
+import "./CatalogFilms.css"
 import { getStarsFromPercentage } from "../NowInTheatersComponent/NowInTheatersCarousel"
 // import { IFilm } from "../../hooks/useCategory";
-
+import { ICategories } from "../CatalogList/CatalogList"
 
 
 interface IFilm{
-    category: string,
+    categories: ICategories,
     title: string,
     src: string,
     percentage: number,
@@ -13,18 +13,19 @@ interface IFilm{
 }
 
 interface IFilmsProps{
-    films: IFilm[]
+    filteredFilms: IFilm[],
+
 }
 
 
 
-export function FilterFilms(props: IFilmsProps) {
+export function CatalogFilms(props: IFilmsProps) {
 
     const sliceFilms = [];
-    for (let i = 0; i < props.films.length; i += 6) {
-        sliceFilms.push(props.films.slice(i, i + 6));
+    for (let i = 0; i < props.filteredFilms.length; i += 6) {
+        sliceFilms.push(props.filteredFilms.slice(i, i + 6));
     }
-
+    console.log(sliceFilms)
     return (
         <div className="FilterFilmsMainDiv">
             {sliceFilms.map((slice, index) => (
