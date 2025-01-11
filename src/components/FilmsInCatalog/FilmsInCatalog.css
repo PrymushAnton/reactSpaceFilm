@@ -1,0 +1,11 @@
+
+
+#filmsInCatalog{
+    padding: 0 40px;
+    grid-column: 3;
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}

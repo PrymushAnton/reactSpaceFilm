@@ -4,7 +4,9 @@ import { FilmsFilter } from "../FilmsFilter/FilmsFilter"
 import { FiltersDiv } from "../FiltersDiv/FiltersDiv"
 
 import "./CatalogList.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+import { useFilms } from "../../hooks/useFilms"
 
 
 import RedOne from "./images/redOne.png";
@@ -25,6 +27,7 @@ import weekendInTaipei from "./images/weekend in taipei.png";
 import Here from "./images/here.png";
 import Blitz from "./images/blitz.png";
 import theCarpenter from "./images/the carpenter.png";
+import { FilmsInCatalog } from "../FilmsInCatalog/FilmsInCatalog"
 
 
 
@@ -52,77 +55,98 @@ const filmsDescription = {
 }
 
 
-const films = [
-    {categories: {"genres":["fantasy", "action", "detective", "adventure", "comedy"]}, src: RedOne, title: "Red One", description: filmsDescription.RedOneDescription, percentage: 87 },
-    {categories: {"genres":["detective"]}, src: Conclave, title: "Conclave", description: filmsDescription.ConclaveDescription, percentage: 75 },
-    {categories: {"genres":["drama", "comedy"]}, src: bestChristmas, title: "The Best Christmas Pageant Ever", description: filmsDescription.bestChristmasDescription, percentage: 95 },
-    {categories: {"genres":["thriller", "horror"]}, src: Heretic, title: "Heretic", description: filmsDescription.HereticDescription, percentage: 50 },
-    {categories: {"genres":["thriller"]}, src: Juror2, title: "Juror #2", description: filmsDescription.Juror2Description, percentage: 82 },
-    {categories: {"genres":["drama", "fantasy"]}, src: Meanwhile, title: "Meanwhile on Earth", description: filmsDescription.MeanwhileDescription, percentage: 92 },
-    {categories: {"genres":["drama", "comedy"]}, src: Anora, title: "Anora", description: filmsDescription.AnoraDescription, percentage: 66 },
-    {categories: {"genres":["action", "adventure", "thriller"]}, src: Venom, title: "Venom: The Last Dance", description: filmsDescription.VenomDescription, percentage: 78 },
-    {categories: {"genres":["drama", "comedy"]}, src: christmasEve, title: "Christmas Eve in Miller's Point", description: filmsDescription.christmasEveDescription, percentage: 88 },
-    {categories: {"genres":["drama", "historical"]}, src: smallThings, title: "Small Things Like These", description: filmsDescription.smallThingsDescription, percentage: 80 },
-    {categories: {"genres":["fantasy", "adventure"]}, src: Overlord, title: "Overlord: The Sacred Kingdom", description: filmsDescription.OverlordDescription, percentage: 60 },
-    {categories: {"genres":["drama"]}, src: pianoLesson, title: "The Piano Lesson", description: filmsDescription.pianoLessonDescription, percentage: 50 },
-    {categories: {"genres":["drama", "comedy"]}, src: aRealPain, title: "A Real Pain", description: filmsDescription.aRealPainDescription, percentage: 40 },
-    {categories: {"genres":["documental"]}, src: Fanmade, title: "Fanmade: ENHYPEN", description: filmsDescription.FanmadeDescripton, percentage: 77 },
-    {categories: {"genres":["action", "thriller"]}, src: weekendInTaipei, title: "Weekend in Taipei", description: filmsDescription.weekendInTaipeiDescription, percentage: 90 },
-    {categories: {"genres":["drama"]}, src: Here, title: "Here", description: filmsDescription.HereDescription, percentage: 85 },
-    {categories: {"genres":["drama", "historical"]}, src: Blitz, title: "Blitz", description: filmsDescription.BlitzDescription, percentage: 70 },
-    {categories: {"genres":["drama"]}, src: theCarpenter, title: "The Carpenter", description: filmsDescription.theCarpenterDescription, percentage: 80 },
-];
+// const films = [
+//     {id: 1, categories: {"genres":["fantasy", "action", "detective", "adventure", "comedy"]}, src: RedOne, name: "Red One", description: filmsDescription.RedOneDescription, rating: 87 },
+//     {id: 2, categories: {"genres":["detective"]}, src: Conclave, name: "Conclave", description: filmsDescription.ConclaveDescription, rating: 75 },
+//     {id: 3, categories: {"genres":["drama", "comedy"]}, src: bestChristmas, name: "The Best Christmas Pageant Ever", description: filmsDescription.bestChristmasDescription, rating: 95 },
+//     {id: 4, categories: {"genres":["thriller", "horror"]}, src: Heretic, name: "Heretic", description: filmsDescription.HereticDescription, rating: 50 },
+//     {id: 5, categories: {"genres":["thriller"]}, src: Juror2, name: "Juror #2", description: filmsDescription.Juror2Description, rating: 82 },
+//     {id: 6, categories: {"genres":["drama", "fantasy"]}, src: Meanwhile, name: "Meanwhile on Earth", description: filmsDescription.MeanwhileDescription, rating: 92 },
+//     {id: 7, categories: {"genres":["drama", "comedy"]}, src: Anora, name: "Anora", description: filmsDescription.AnoraDescription, rating: 66 },
+//     {id: 8, categories: {"genres":["action", "adventure", "thriller"]}, src: Venom, name: "Venom: The Last Dance", description: filmsDescription.VenomDescription, rating: 78 },
+//     {id: 9, categories: {"genres":["drama", "comedy"]}, src: christmasEve, name: "Christmas Eve in Miller's Point", description: filmsDescription.christmasEveDescription, rating: 88 },
+//     {id: 10, categories: {"genres":["drama", "historical"]}, src: smallThings, name: "Small Things Like These", description: filmsDescription.smallThingsDescription, rating: 80 },
+//     {id: 11, categories: {"genres":["fantasy", "adventure"]}, src: Overlord, name: "Overlord: The Sacred Kingdom", description: filmsDescription.OverlordDescription, rating: 60 },
+//     {id: 12, categories: {"genres":["drama"]}, src: pianoLesson, name: "The Piano Lesson", description: filmsDescription.pianoLessonDescription, rating: 50 },
+//     {id: 13, categories: {"genres":["drama", "comedy"]}, src: aRealPain, name: "A Real Pain", description: filmsDescription.aRealPainDescription, rating: 40 },
+//     {id: 14, categories: {"genres":["documental"]}, src: Fanmade, name: "Fanmade: ENHYPEN", description: filmsDescription.FanmadeDescripton, rating: 77 },
+//     {id: 15, categories: {"genres":["action", "thriller"]}, src: weekendInTaipei, name: "Weekend in Taipei", description: filmsDescription.weekendInTaipeiDescription, rating: 90 },
+//     {id: 16, categories: {"genres":["drama"]}, src: Here, name: "Here", description: filmsDescription.HereDescription, rating: 85 },
+//     {id: 17, categories: {"genres":["drama", "historical"]}, src: Blitz, name: "Blitz", description: filmsDescription.BlitzDescription, rating: 70 },
+//     {id: 18, categories: {"genres":["drama"]}, src: theCarpenter, name: "The Carpenter", description: filmsDescription.theCarpenterDescription, rating: 80 },
+// ];
 
 
-export interface ICategories{
-    [key: string]: string[]
-}
+// export interface ICategories{
+//     [key: string]: string[]
+// }
 
 export interface IFilm{
-    src: string,
-    title: string,
-    description: string,
-    categories: ICategories,
-    percentage: number,
+    // [key: string]: any,
+    "id": number,
+    "genres": string[],
+    "src": string,
+    "name": string,
+    "description": string,
+    "rating": number,
+    [key: string]: any;
 }
 
+
+export interface IFilters{
+    [key: string]: string[]
+}
 
 
 export function CatalogList(){
 
-    
-    const [filteredFilms, setFilteredFilms] = useState(films)
-    let objectOfCategories: ICategories = {}
-    let maxValue: number = 0;
-    for (let i = 0; i < films.length; i++) {
-        for (let key in films[i].categories){
 
-            if (!(key in objectOfCategories)){
-                console.log("BOOOOOOOL", !(key in objectOfCategories))
-                objectOfCategories[key] = []
+    const {films, isLoading, error} = useFilms()
+
+
+    const [filters, setFilters] = useState<IFilters>({})
+
+    const [filteredFilms, setFilteredFilms] = useState<IFilm[]>([])
+
+    useEffect(() => {
+
+        let isKeysEmpty = true
+
+        Object.keys(filters).forEach((key) => {
+            if (filters[key].length !== 0) {
+                isKeysEmpty = false
             }
+        })
+
+        if (Object.keys(filters).length === 0 || isKeysEmpty){
+            console.log(1434298753485)
+            setFilteredFilms(films)
+        } else {
+            console.log(546456456546)
+            setFilteredFilms(films.filter((film) => {
+                let conditionIsTrue = false
+                Object.keys(film).forEach((filmKey) => {
+                    try {
+                        conditionIsTrue = filters[filmKey].every((filterArrayElement) => {
+                            console.log(film[filmKey].includes(filterArrayElement))
+                            
+                            return film[filmKey].includes(filterArrayElement)
+                        })
+                    } catch {
+
+                    }
+                    
+                })
+                return conditionIsTrue
+            }))
         }
-    }
+    }, [filters, films])
 
-
-    console.log("OBJECTTTTTT",objectOfCategories)
-
-    const [categories, setCategories] = useState<ICategories>(objectOfCategories)
-
-    console.log(Object.keys(objectOfCategories))
 
     return (
         <div id="CatalogList">
-            {/* <FilmsFilter></FilmsFilter>
-            <FilterFilms films={films}></FilterFilms> */}
-
-
-            {/* setFunction={setFilteredFilms} filteredFilms={filteredFilms} */}
-            {/* <SearchFilmCatalog></SearchFilmCatalog> */}
-            
-            <FiltersDiv films={films} keyOfObject={'genres'} setCategories={setCategories} categories={categories} setFilteredFilms={setFilteredFilms} filteredFilms={filteredFilms}></FiltersDiv>
-            <CatalogFilms filteredFilms={filteredFilms} ></CatalogFilms>
-            
+            <FiltersDiv setFilters={setFilters} filters={filters}></FiltersDiv>
+            <FilmsInCatalog films={filteredFilms}></FilmsInCatalog>
         </div>
     )
 }

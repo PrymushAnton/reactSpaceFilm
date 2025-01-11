@@ -1,5 +1,5 @@
 import { OneItem } from "../OneItem/OneItem"
-import { ICategories, IFilm } from "../CatalogList/CatalogList"
+import { IFilm } from "../CatalogList/CatalogList"
 
 import "./Genres.css"
 
@@ -9,7 +9,7 @@ interface IGenresProps{
     films: IFilm[],
     keyOfObject: string,
     setCategories: Function,
-    categories: ICategories,
+    genres: string[]
     setFilteredFilms: Function,
     filteredFilms: IFilm[]
 }
@@ -23,19 +23,20 @@ export function Genres(props: IGenresProps){
     props.films.forEach((film) => {
         
 
-        film.categories[props.keyOfObject].forEach((category) => {
-            setOfCategories.add(category)
+        film.genres.forEach((genre) => {
+            setOfCategories.add(genre)
         })
     })
 
     const categoriesArray = Array.from(setOfCategories)
 
     return (
-        <div className="genresContainer">
-            <h2 id="genresTitle">Genres</h2>
-            {categoriesArray.map((item) => { 
-                return <OneItem name={item} keyOfObject={props.keyOfObject} categories={props.categories} setCategories={props.setCategories} setFilteredFilms={props.setFilteredFilms} filteredFilms={props.filteredFilms} films={props.films}></OneItem>
-            })}
-        </div>
+        <></>
+        // <div className="genresContainer">
+        //     <h2 id="genresTitle">Genres</h2>
+        //     {categoriesArray.map((item, index) => { 
+        //         return <OneItem key={index} name={item} keyOfObject={props.keyOfObject} categories={props.categories} setCategories={props.setCategories} setFilteredFilms={props.setFilteredFilms} filteredFilms={props.filteredFilms} films={props.films}></OneItem>
+        //     })}
+        // </div>
     )
 }

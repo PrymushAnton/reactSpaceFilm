@@ -1,26 +1,24 @@
-
 import "./FiltersDiv.css"
 import { SearchFilmCatalog } from "../SearchFilmCatalog/SearchFilmCatalog"
-import { Genres } from "../Genres/Genres";
-import { IFilm, ICategories } from "../CatalogList/CatalogList"
+import { GenresFilter } from "../GenresFilter/GenresFilter"
+import { useState } from "react"
+import { IFilters } from "../CatalogList/CatalogList"
+
 
 interface IFiltersDivProps{
-    films: IFilm[]
-    keyOfObject: string,
-    setCategories: Function,
-    categories: ICategories,
-    setFilteredFilms: Function,
-    filteredFilms: IFilm[],
+    setFilters: Function,
+    filters: IFilters
 }
 
 export function FiltersDiv(props: IFiltersDivProps){
 
 
+
     return (
         <div className="filtersContainer">
             <SearchFilmCatalog></SearchFilmCatalog>
-            <Genres films={props.films} keyOfObject={props.keyOfObject} setCategories={props.setCategories} categories={props.categories} setFilteredFilms={props.setFilteredFilms} filteredFilms={props.filteredFilms}></Genres>
-
+            <GenresFilter setFilters={props.setFilters} filters={props.filters}></GenresFilter>
         </div>
     )
 }
+

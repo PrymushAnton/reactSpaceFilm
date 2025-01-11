@@ -1,0 +1,11 @@
+.filtersContainer{
+    grid-column: 2;
+
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgba(24, 130, 255, 0.8);
+    
+    padding: 20px;
+
+    height: max-content;
+}
