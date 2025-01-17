@@ -1,7 +1,7 @@
 
-import { CatalogFilms } from "../CatalogFilms/CatalogFilms"
-import { FilmsFilter } from "../FilmsFilter/FilmsFilter"
-import { FiltersDiv } from "../FiltersDiv/FiltersDiv"
+import { CatalogFilms } from "../../shared/CatalogFilms/CatalogFilms"
+import { FilmsFilter } from "../../shared/FilmsFilter/FilmsFilter"
+import { FiltersDiv } from "../../shared/FiltersDiv/FiltersDiv"
 
 import "./CatalogList.css"
 import { useEffect, useState } from "react"
@@ -27,7 +27,7 @@ import weekendInTaipei from "./images/weekend in taipei.png";
 import Here from "./images/here.png";
 import Blitz from "./images/blitz.png";
 import theCarpenter from "./images/the carpenter.png";
-import { FilmsInCatalog } from "../FilmsInCatalog/FilmsInCatalog"
+import { FilmsInCatalog } from "../../shared/FilmsInCatalog/FilmsInCatalog"
 
 
 

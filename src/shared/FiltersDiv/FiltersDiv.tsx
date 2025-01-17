@@ -2,7 +2,7 @@ import "./FiltersDiv.css"
 import { SearchFilmCatalog } from "../SearchFilmCatalog/SearchFilmCatalog"
 import { GenresFilter } from "../GenresFilter/GenresFilter"
 import { useState } from "react"
-import { IFilters } from "../CatalogList/CatalogList"
+import { IFilters } from "../../pages/CatalogList/CatalogList"
 
 
 interface IFiltersDivProps{

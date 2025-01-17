@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { IFilm } from "../components/CatalogList/CatalogList"
+import { IFilm } from "../pages/CatalogList/CatalogList"
 
 
 

@@ -2,7 +2,7 @@
 import "./FiltersDiv.css"
 import { SearchFilmCatalog } from "../SearchFilmCatalog/SearchFilmCatalog"
 import { Genres } from "../Genres/Genres";
-import { IFilm } from "../CatalogList/CatalogList"
+import { IFilm } from "../../pages/CatalogList/CatalogList"
 
 interface IFiltersDivProps{
     films: IFilm[]

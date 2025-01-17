@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import "./OneItem.css"
-import { IFilm } from "../CatalogList/CatalogList"
+import { IFilm } from "../../pages/CatalogList/CatalogList"
 
 
 

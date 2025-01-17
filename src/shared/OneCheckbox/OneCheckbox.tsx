@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./OneCheckbox.css"
 
-import { IFilters } from "../CatalogList/CatalogList"
+import { IFilters } from "../../pages/CatalogList/CatalogList"
 
 
 interface IOneCheckbox{

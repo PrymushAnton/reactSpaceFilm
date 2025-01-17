@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "./GenresFilter.css"
 import { OneCheckbox } from "../OneCheckbox/OneCheckbox"
-import { IFilters } from "../CatalogList/CatalogList"
+import { IFilters } from "../../pages/CatalogList/CatalogList"
 
 
 

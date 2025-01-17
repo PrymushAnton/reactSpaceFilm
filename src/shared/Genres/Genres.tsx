@@ -1,5 +1,5 @@
 import { OneItem } from "../OneItem/OneItem"
-import { IFilm } from "../CatalogList/CatalogList"
+import { IFilm } from "../../pages/CatalogList/CatalogList"
 
 import "./Genres.css"
 
