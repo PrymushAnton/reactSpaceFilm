@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react"
-
-import { IFilm } from "../pages/CatalogList/CatalogList"
-
+import { IFilm } from "../shared/OneFilmInCatalog/OneFilmInCatalog"
 
 
 
-export function useFilms(){
+export function useFilmById(id: number){
 
-    const [films, setFilms] = useState<IFilm[]>([])
+    const [film, setFilm] = useState<IFilm>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>()
 
@@ -17,9 +15,9 @@ export function useFilms(){
         async function getAllFilms(){
             try{
                 setIsLoading(true)
-                const response = await fetch('http://localhost:3001/film/all')
-                const filmsApi = await response.json()
-                setFilms(filmsApi)
+                const response = await fetch(`http://localhost:3001/film/${id}`)
+                const filmApi = await response.json()
+                setFilm(filmApi)
             } catch (error) {
                 if (error instanceof Error){
                     setError(error.message)
@@ -33,5 +31,6 @@ export function useFilms(){
 
     }, [])
 
-    return {films: films, isLoading: isLoading, error: error}
+    return {film: film, isLoading: isLoading, error: error}
+    
 }
