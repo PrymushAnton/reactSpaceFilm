@@ -12,7 +12,7 @@ export function MainList(){
     return (
         <div id="MainList">
             <ComingSoonSliderNew></ComingSoonSliderNew>
-            <NowInTheatersCarousel></NowInTheatersCarousel>
+            <NowInTheatersCarousel span={5}></NowInTheatersCarousel>
             <CarouselCelebrities></CarouselCelebrities>
             <RecentNewsSlider></RecentNewsSlider>
         </div>

@@ -81,16 +81,41 @@ const filmsDescription = {
 //     [key: string]: string[]
 // }
 
-export interface IFilm{
-    // [key: string]: any,
-    "id": number,
-    "genres": string[],
-    "src": string,
-    "name": string,
-    "description": string,
-    "rating": number,
-    [key: string]: any;
+
+
+export interface IUser{
+    src: string,
+    name: string
 }
+
+export interface IReview{
+    text: string,
+    mark: number,
+    user: IUser
+}
+
+
+export interface IFilm{
+    id: number,
+    name: string,
+    src: string,
+    rating: number,
+    year: number,
+    baseLanguage: string,
+    homeCountry: string,
+    ageRestriction: string,
+    description: string,
+    genres: string[],
+    photo1: string,
+    photo2: string,
+    photo3: string,
+    photo4: string,
+    actors: string[],
+    reviews: IReview[],
+    [key: string]: any;
+
+}
+
 
 
 export interface IFilters{

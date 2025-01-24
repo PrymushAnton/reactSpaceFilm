@@ -1,63 +1,151 @@
 import { useParams } from "react-router-dom"
 import "./FilmPage.css"
 import { NowInTheatersCarousel } from "../../shared/NowInTheatersComponent/NowInTheatersCarousel"
+import { useFilmById } from "../../hooks/useFilmById"
+import { IFilm } from "../../shared/OneFilmInCatalog/OneFilmInCatalog"
 
+interface IFilmInfo{
+    ageRestriction: string | undefined,
+    year: number | undefined,
+    rating: number | undefined,
+    baseLanguage: string | undefined,
+    homeCountry: string | undefined,
+    genres: string[] | undefined,
+    actors: string[] | undefined,
+    description: string | undefined,
+}
+
+interface IFilmInfoNames{
+    ageRestriction: string | undefined,
+    year: string | undefined,
+    rating: string | undefined,
+    baseLanguage: string | undefined,
+    homeCountry: string | undefined,
+    genres: string | undefined,
+    actors: string | undefined,
+    description: string | undefined,
+
+}
+
+interface IPhotos{
+    photo1: string,
+    photo2: string,
+    photo3: string,
+    photo4: string,
+
+}
 
 export function FilmPage() {
-    
-    const film_information = [
-        {
-            img: "https://upload.wikimedia.org/wikipedia/en/1/1f/Mission_Impossible_%E2%80%93_The_Final_Reckoning_Poster.jpg"
-        }
-    ]
+    const params = useParams()
+    const {film, isLoading, error} = useFilmById(Number(params.id))
+    const filmInfo: IFilmInfo = {
+        ageRestriction: film?.ageRestriction,
+        year: film?.year,
+        rating: film?.rating,
+        baseLanguage: film?.baseLanguage,
+        homeCountry: film?.homeCountry,
+        genres: film?.genres,
+        actors: film?.actors,
+        description: film?.description
+    }
+
+    const namesOfInfo: IFilmInfoNames = {
+        ageRestriction: "Вікове обмеження",
+        year: "Рік виходу",
+        rating: "Рейтинг",
+        baseLanguage: "Мова оригіналу",
+        homeCountry: "Країна",
+        genres: "Жанри",
+        actors: "Актори",
+        description: "Опис"
+    }
+
+    // const photosOfFilm: IPhotos = {
+    //     photo1: 
+    // }
 
     return (
-        <div>
-            <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/Mission_Impossible_%E2%80%93_The_Final_Reckoning_Poster.jpg" alt="" />
-            <h1>Mission: Impossible - The Final Reckoning</h1>
-            <p>2025 ● 1h 32m</p>
-            <div className="description">
-                <p className="rating">Rating: </p>
-                <p className="year">Year:</p>
-                <p className="originalName">Original name: </p>
-                <p className="director">Director: </p>
-                <p className="releaseDate">Release date: </p>
-                <p className="language">Language: </p>
-                <p className="genre">Genre: </p>
-                <p className="duration">Duration: </p>
-                <p className="producer">Producer: </p>
-                <p className="productionStudio">Production studio: </p>
-                <p className="screenplay">Screenplay: </p>
-                <p className="starring">Starring: </p>
-                <p className="inclusiveAdaptation">Inclusive adaptation: </p>
-            </div>
-            <div className="information">
-                <p className="rating">16+ (Preliminary)</p>
-                <p className="year">2025</p>
-                <p className="originalName">Mission: Impossible - The Final Reckoning</p>
-                <p className="director">Christopher McQuarrie</p>
-                <p className="releaseDate">22.05.2025</p>
-                <p className="language">Ukrainian language</p>
-                <p className="genre">Action, Militant, Thriller</p>
-                <p className="duration">2:00</p>
-                <p className="producer">USA</p>
-                <p className="productionStudio">Paramount Pictures, Skydance Productions</p>
-                <p className="screenplay">Christopher McCurry</p>
-                <p className="starring">Tom Cruise, Hayley Atwell, Simon Pegg, Pom Klementieff, Ving Rhames, Hannah Quinlivan, Vanessa Kirby, Shea Whigham</p>
-                <p className="inclusiveAdaptation">The film is adapted for people with hearing loss and hearing loss. To quickly access this option, add additional information "Greta&Starks" to your smartphone.</p>
-                <p className="filmDescription">Tom Cruise is returning in a new installment of the cult franchise "Mission: Impossible - Fallout". Ethan Hunt will face his most dangerous mission of his career!</p>
-            </div>
-            <div className="imageFilm">
-                <img src="" alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
-            </div>
-            <NowInTheatersCarousel></NowInTheatersCarousel>
-            <div className="commentsDiv">
-                <div className="comment">
-                    {/* system with map, NowInTheatersCarousel like */}
+        <div id="FilmList">
+            <div id="filmInfoContainer">
+                <img id="filmImage" src={film && film.src} alt="" />
+
+                <div id="filmInfoDiv">
+                    <div id="nameOfFilmDiv">
+                        <h2>{film && film.name}</h2>
+                    </div>
+                    <table id="filmInfoDivColumns">
+                        <tbody>
+                            {Object.keys(filmInfo).map((key, index) => {
+                                const typedKey = key as keyof IFilmInfo
+                                const typedKeyNames = key as keyof IFilmInfoNames
+                                const value = filmInfo[typedKey]
+                                let tempString = ""
+                                console.log(value)
+                                Array.isArray(value) && value.forEach((data, index) => {
+                                    tempString = tempString + data + ", "
+                                })
+                                tempString = tempString.slice(0, -2)
+                                
+                                return <tr key={index} className={index % 2 !== 0 ? "withBg" : undefined}>
+                                    <th className="infoName">
+                                        {namesOfInfo[typedKeyNames]}:
+                                    </th>
+                                    <td className="infoData">
+                                        {
+                                            Array.isArray(value)
+                                            ? tempString
+                                            : value
+                                        }
+                                    </td>
+                                    
+                                </tr>
+                                
+                            })}
+                        </tbody>
+
+                        
+                    </table>
                 </div>
+            </div>
+            
+
+            <div id="photosOfFilmContainer">
+                <h2 id="photosText">Photos</h2>
+                <div id="photosOfFilm">
+                    {Object.keys(film ? film : {}).map((key, index) => {
+                        const typedKey = key as keyof IFilm
+                        const value = film ? film[typedKey] : ""
+                        
+                        return key.includes("photo") && typeof value === "string"
+                        ? <img id="photoFromFilm" key={index} src={value} alt=""/>
+                        : undefined
+                    })}
+                </div>
+
+                
+            </div>
+
+
+
+           
+            <div id="reviewsDiv">
+                <div id="reviewsTextDiv">
+                    <h2 id="reviewsText">Reviews</h2>
+                </div>
+                <div id="reviews">
+                    {film && film["reviews"].reverse().map((review, index) => {
+                        return <div className="review">
+                            <div className="profileInfo">
+                                <img className="userImage" src={review.user.src} alt="" />
+                                <h6>{review.user.name}</h6>
+                            </div>
+                            <div className="textOfReview">{review.text}</div>
+                            <div className="markOfReview">{review.mark}/10</div>
+
+                        </div>
+                    })}
+                </div>
+                
             </div>
         </div>
     )

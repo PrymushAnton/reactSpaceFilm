@@ -72,14 +72,18 @@ export function getStarsFromPercentage(percentage: any) {
     return "★".repeat(stars) + (hasHalfStar ? "☆" : "") + "☆".repeat(5 - stars - (hasHalfStar ? 1 : 0));
 }
 
-export function NowInTheatersCarousel() {
+interface INowInTheatersCarouselProps{
+    span: number;
+}
+
+export function NowInTheatersCarousel(props: INowInTheatersCarouselProps) {
     const sliceFilms = [];
     for (let i = 0; i < films.length; i += 6) {
         sliceFilms.push(films.slice(i, i + 6));
     }
 
     return (
-        <div className="NowInTheatersMainContainer">
+        <div className="NowInTheatersMainContainer" style={{gridColumn: `2 / span ${props.span}`}}>
             <div className="NowInTheatersContainer">
                 <h4 id="NowInTheatersText">Now in theaters</h4>
                 <button id="ViewAllButtonNowInTheaters">View all</button>
