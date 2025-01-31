@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react"
-
 import { IFilm } from "../pages/CatalogList/CatalogList"
-
-
-
 
 export function useFilms(){
 

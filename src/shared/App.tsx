@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { CatalogList } from "../pages/CatalogList/CatalogList"
 import { MainList } from '../pages/MainList/MainList'
 import { FilmPage } from '../pages/FilmPage/FilmPage'
-
+import { ActorPage } from '../pages/ActorPage/ActorPage'
 
 
 
@@ -18,6 +18,7 @@ export function App(){
                     <Route path='/' element={<MainList></MainList>}></Route>
                     <Route path='/catalog' element={<CatalogList></CatalogList>}></Route>
                     <Route path='/film/:id' element={<FilmPage></FilmPage>}></Route>
+                    <Route path='/actor' element={<ActorPage></ActorPage>}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>
