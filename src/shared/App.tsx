@@ -18,7 +18,7 @@ export function App(){
                     <Route path='/' element={<MainList></MainList>}></Route>
                     <Route path='/catalog' element={<CatalogList></CatalogList>}></Route>
                     <Route path='/film/:id' element={<FilmPage></FilmPage>}></Route>
-                    <Route path='/actor' element={<ActorPage></ActorPage>}></Route>
+                    <Route path='/actor/:id' element={<ActorPage></ActorPage>}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>

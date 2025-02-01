@@ -152,7 +152,7 @@ body {
 
     position: absolute;
     width: 566px;
-    height: 172px;
+    height: 132px;
     left: 489px;
     top: 174px;
     
@@ -216,7 +216,7 @@ body {
 /* 1.70 m */
 .HeightInfo {
     position: absolute;
-    width: 55px;
+    width: 75px;
     height: 19px;
     left: 73px;
     top: 57px;
@@ -252,7 +252,7 @@ body {
 /* Jum Chow and Jean Chow */
 .ParentsInfo {
     position: absolute;
-    width: 210px;
+    width: 350px;
     height: 19px;
     left: 81px;
     top: 98px;
@@ -293,7 +293,6 @@ body {
     left: 109px;
     top: 140px;
 
- 
     font-size: 16px;
     line-height: 19px;
     display: flex;
@@ -398,208 +397,13 @@ body {
     width: 629px;
     height: 323px;
     left: 489px;
-    top: 340px;
+    top: 475px;
 
 
     font-size: 16px;
     line-height: 19px;
     display: flex;
     align-items: center;
-    
-    color: #52555B;
-}
-
-/* triviadiv */
-.triviaDiv {
-    position: absolute;
-    width: 566px;
-    height: 247px;
-    left: 488px;
-}
-
-/* triviatext */
-.triviaTextDiv {
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 3px;
-
-    position: absolute;
-    width: 128px;
-    height: 24px;
-    left: 490px;
-    top: 1280px;
-}
-
-/* Rectangle 4 */
-.triviaSideline {
-    width: 1px;
-    height: 20px;
-    
-    background: #000000;
-    
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    
-}
-
-/* Trivia */
-.triviaText {
-    width: 54px;
-    height: 24px;
-
-
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-    color: #000000;
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-
-/* trivia info */
-.triviaDivInfo {
-    box-sizing: border-box;
-
-    position: absolute;
-    width: 566px;
-    height: 213px;
-    left: 488px;
-    top: 1315px;
-    
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
-}
-
-/* She was born to Jim and Jean Chow. */
-.firstTrivia {
-    position: absolute;
-    width: 286px;
-    height: 19px;
-    left: 6px;
-    top: 14px;
-
-
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-    color: #52555B;    
-}
-
-/* line */
-#triviaFirstLine {
-    position: absolute;
-
-    left: 6px;
-    top: 44px;
-}
-
-/* She has a younger sister and brother. */
-.secondTrivia {
-    position: absolute;
-    width: 292px;
-    height: 19px;
-    left: 6px;
-    top: 56px;
-
-
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-    color: #52555B;
-    
-}
-
-/* line */
-#triviaSecondLine {
-    position: absolute;
-
-    left: 6px;
-    top: 85px;
-}
-
-/* She graduated from Hammond School in her hometown of Columbia */
-.thirdTrivia {
-    position: absolute;
-    width: 529px;
-    height: 19px;
-    left: 6px;
-    top: 97px;
-
-
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-    color: #52555B;
-}
-
-/* line */
-#triviaThirdLine {
-    position: absolute;
-
-    left: 6px;
-    top: 127px;
-}
-
-/* She had her breakout television role as Gigi Silveri on One Tree Hill. */
-.fourthTrivia {
-    position: absolute;
-    width: 522px;
-    height: 19px;
-    left: 6px;
-    top: 139px;
-
-
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-    color: #52555B;
-}
-
-/* line */
-#triviaFourthLine {
-    position: absolute;
-
-    left: 6px;
-    top: 168px;
-}
-
-/* She shared the small screen with G. Hannelius in the 2010 on TV */
-.fifthTrivia {
-    position: absolute;
-    width: 500px;
-    height: 19px;
-    left: 6px;
-    top: 180px;
-
-
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     
     color: #52555B;
 }
@@ -651,7 +455,7 @@ body {
 .filmsAndSerialsDivMain {
     position: absolute;
     left: 975px;
-    top: 675px;
+    top: 950px;
 }
 
 .filmsAndSerialsDiv {
@@ -734,5 +538,18 @@ body {
 
 footer {
     position: absolute;
-    top: 1600px;
+    top: 1700px;
 }
+
+
+/* image 41 */
+.actorImage {
+    position: absolute;
+    width: 250px;
+    height: 330px;
+    left: 216px;
+    top: 82px;
+    
+    border-radius: 10px;
+}
+
