@@ -9,8 +9,8 @@ body {
     position: absolute;
     width: 567px;
     height: 55px;
-    left: 488px;
-    top: 22px;
+    left: 384px;
+    top: 0px;
 }
 
 /* Kelsey Asbille */
@@ -83,7 +83,7 @@ body {
     width: 567px;
     height: 1px;
     left: 488px;
-    top: 136px;
+    top: 118px;
     
     background: #000000;
 }
@@ -93,8 +93,8 @@ body {
     position: absolute;
     width: 567px;
     height: 201px;
-    left: 488px;
-    top: 30px;
+    left: 384px;
+    top: 0px;
 }
 
 /* overviewtext */
@@ -110,7 +110,7 @@ body {
     width: 128px;
     height: 24px;
     left: 488px;
-    top: 145px;
+    top: 125px;
 }
 
 /* Rectangle 4 */
@@ -154,7 +154,7 @@ body {
     width: 566px;
     height: 132px;
     left: 489px;
-    top: 174px;
+    top: 154px;
     
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 5px;
@@ -221,7 +221,6 @@ body {
     left: 73px;
     top: 57px;
 
- 
     font-size: 16px;
     line-height: 19px;
     display: flex;
@@ -239,7 +238,6 @@ body {
     left: 11px;
     top: 98px;
 
- 
     font-size: 16px;
     line-height: 19px;
     display: flex;
@@ -257,7 +255,6 @@ body {
     left: 81px;
     top: 98px;
 
- 
     font-size: 16px;
     line-height: 19px;
     display: flex;
@@ -275,7 +272,6 @@ body {
     left: 11px;
     top: 140px;
     
- 
     font-size: 16px;
     line-height: 19px;
     display: flex;
@@ -334,134 +330,109 @@ body {
     top: 128px;
 }
 
-/* biographydiv */
-.biographyDiv {
-    position: absolute;
-    width: 629px;
-    height: 352px;
-    left: 489px;
-    top: 40px;
+.containerMainActor { 
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto; 
+
+    width: 100%;
+    padding: 20px;
 }
 
-/* Biographytext */
+/* Блок Биографии */
+.biographyDiv {
+    width: 629px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 851px;
+    margin-top: 210px;
+}
+
 .biographyTextDiv {
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
     gap: 3px;
-
-    position: absolute;
     width: 128px;
     height: 24px;
-    left: 489px;
-    top: 356px;
 }
 
-/* Rectangle 4 */
 .biographySideline {
     width: 1px;
     height: 20px;
-    
     background: #000000;
-    
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;    
 }
 
-/* Biography */
 .biographyText {
     width: 99px;
     height: 24px;
-
- 
     font-size: 20px;
     line-height: 24px;
     display: flex;
     align-items: center;
     text-align: center;
-    
     color: #000000;
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
 
-/* Kelsey Asbille Chow is an American actress... */
 .biographyDivInfo {
-    position: absolute;
     width: 629px;
-    height: 323px;
-    left: 489px;
-    top: 475px;
-
-
     font-size: 16px;
     line-height: 19px;
     display: flex;
-    align-items: center;
-    
+    flex-direction: column;
+    align-items: flex-start;
     color: #52555B;
 }
 
 /* films(known her) */
+
+/* Надпись "Films and Serials" */
 .filmsAndSerialsTextDiv {
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
     gap: 3px;
-
+    width: 128px;
+    height: 24px;
 }
 
-/* Rectangle 4 */
 .filmsAndSerialsSideline {
     width: 1px;
     height: 20px;
-    
     background: #000000;
-    
-    /* Inside auto layout */
     flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
-/* Films and Serials */
 .filmsAndSerialsText {
     width: 166px;
     height: 24px;
-    
-
     font-size: 20px;
     line-height: 24px;
     display: flex;
     align-items: center;
     text-align: center;
-    
     color: #000000;
-    
-    /* Inside auto layout */
     flex: none;
-    order: 1;
-    flex-grow: 0;
 }
 
+/* Сетка с фильмами */
 .filmsAndSerialsDivMain {
-    position: absolute;
-    left: 975px;
-    top: 950px;
+    display: grid;
+    grid-template-columns: repeat(4, 140px); 
+    gap: 20px;
+    justify-items: center;
+    margin-left: 843px;  
+    margin-top: 20px;    
 }
 
 .filmsAndSerialsDiv {
     padding: 10px;
     display: grid;
-    grid-template-columns: 140px 140px 140px 140px;
+    grid-template-columns: repeat(4, 140px); 
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 130px;
 }
 
 .filmsAndSerialsInformationDiv {
@@ -527,7 +498,7 @@ body {
     /* font-size: 12px; */
 
     position: absolute;
-    left: 450px;
+    left: 1350px;
 }
 
 #ViewAllButtonFilmsAndSerials:hover{
@@ -545,11 +516,10 @@ footer {
 /* image 41 */
 .actorImage {
     position: absolute;
-    width: 250px;
-    height: 330px;
-    left: 216px;
+    width: 350px;
+    height: 400px;
+    left: 500px;
     top: 82px;
     
     border-radius: 10px;
 }
-

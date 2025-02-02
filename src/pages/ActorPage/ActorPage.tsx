@@ -52,7 +52,7 @@ export function ActorPage() {
     const displayedFilms = showAllFilms ? films : films.slice(0, 4);
 
     return (
-        <div>
+        <div className='containerMainActor'>
             <img className='actorImage' src={actor.src} alt="" />
 
             <div className="Div">
