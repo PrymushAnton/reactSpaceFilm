@@ -12,28 +12,6 @@ import Meanwhile from "./images/meanwhile.png";
 import Anora from "./images/anora.png";
 import Venom from "./images/venom.png";
 
-const filmsDescription = {
-    RedOneDescription: "After Santa Claus -- Code Name: RED ONE -- is kidnapped, the North...",
-    ConclaveDescription: "CONCLAVE follows one of the world’s most secretive and ancient events...",
-    bestChristmasDescription: "The Herdmans are absolutely the worst kids in the history of the...",
-    HereticDescription: "Two young missionaries are forced to prove their faith when they knock on...",
-    Juror2Description: "'Juror #2' follows family man Justin Kemp (Nicholas Hoult) who...",
-    MeanwhileDescription: "Elsa (Megan Northam, in her debut feature starring role), along with her...",
-    AnoraDescription: "Sean Baker's Palme d'Or winner ANORA is an audacious, thrilling, and...",
-    VenomDescription: "In Venom: The Last Dance, Tom Hardy returns as Venom, one of Marvel's...",
-}
-
-const films = [
-    { src: RedOne, title: "Red One", description: filmsDescription.RedOneDescription, percentage: 87 },
-    { src: Conclave, title: "Conclave", description: filmsDescription.ConclaveDescription, percentage: 75 },
-    { src: bestChristmas, title: "The Best Christmas Pageant Ever", description: filmsDescription.bestChristmasDescription, percentage: 95 },
-    { src: Heretic, title: "Heretic", description: filmsDescription.HereticDescription, percentage: 50 },
-    { src: Juror2, title: "Juror #2", description: filmsDescription.Juror2Description, percentage: 82 },
-    { src: Meanwhile, title: "Meanwhile on Earth", description: filmsDescription.MeanwhileDescription, percentage: 92 },
-    { src: Anora, title: "Anora", description: filmsDescription.AnoraDescription, percentage: 66 },
-    { src: Venom, title: "Venom: The Last Dance", description: filmsDescription.VenomDescription, percentage: 78 },
-];
-
 export function getStarsFromPercentage(percentage: number) {
     const stars = Math.floor(percentage / 20);
     const hasHalfStar = percentage % 20 >= 10;
@@ -49,7 +27,7 @@ export function ActorPage() {
         return <div>netu actera</div>; 
     }
 
-    const displayedFilms = showAllFilms ? films : films.slice(0, 4);
+    const displayedFilms = showAllFilms ? actor.films : actor.films.slice(0, 4);
 
     return (
         <div className='containerMainActor'>
@@ -95,15 +73,15 @@ export function ActorPage() {
                 </div>
 
                 <div className="filmsAndSerialsDiv">
-                    {displayedFilms.map((item, idx) => (
+                    {displayedFilms.map((film: { src: string; name: string; description: string; rating: number }, idx: number) => (
                         <div className="filmsAndSerialsInformationDiv" key={idx}>
-                            <img id="imgFilm" src={item.src} alt={item.title} />
-                            <h5 id="filmTitle">{item.title}</h5>
+                            <img id="imgFilm" src={film.src} alt={film.name} />
+                            <h5 id="filmTitle">{film.name}</h5>
                             <div className='ratingFilmsAndSerials'>
-                                <p id="filmStars">{getStarsFromPercentage(item.percentage)}</p>
-                                <p id="percentText">{item.percentage}%</p>
+                                <p id="filmStars">{getStarsFromPercentage(film.rating)}</p>
+                                <p id="percentText">{film.rating}%</p>
                             </div>
-                            <p id="descriptionFilm">{item.description}</p>
+                            <p id="descriptionFilm">{film.description}</p>
                         </div>
                     ))}
                 </div>
