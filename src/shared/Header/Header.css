@@ -47,14 +47,6 @@ header a {
     outline: 0
 }
 
-#loginButtonHeader{
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
 #searchLogin{
     grid-column: 6;
     display: grid;
