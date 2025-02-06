@@ -39,10 +39,6 @@ interface IFilmsInCatalogProps{
 
 
 export function FilmsInCatalog(props: IFilmsInCatalogProps){
-
-    
-
-
     return (
         <div id="filmsInCatalog">
             {props.films.map((film, index) => {

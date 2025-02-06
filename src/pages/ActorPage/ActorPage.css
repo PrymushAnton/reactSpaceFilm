@@ -1,0 +1,525 @@
+body {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Kelse Asbille */
+.Div {
+    position: absolute;
+    width: 567px;
+    height: 55px;
+    left: 384px;
+    top: 0px;
+}
+
+/* Kelsey Asbille */
+.Text {
+    position: absolute;
+    width: 300px;
+    height: 34px;
+    left: 488px;
+    top: 82px;
+    
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #747A84;
+}
+
+/* Actress */
+.Actress {
+    position: absolute;
+    width: 60px;
+    height: 19px;
+    left: 488px;
+    top: 116px;
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #52555B;
+}
+
+/* Ellipse 18 */
+.Ellipse {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 552px;
+    top: 123px;
+    
+    background: #52555B;
+    border-radius: 10px;
+}
+
+/* Producer */
+.Producer {
+    position: absolute;
+    width: 71px;
+    height: 19px;
+    left: 561px;
+    top: 116px;
+    
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #52555B;
+}
+
+/* line */
+.hr {
+    position: absolute;
+    width: 567px;
+    height: 1px;
+    left: 488px;
+    top: 118px;
+    
+    background: #000000;
+}
+
+/* overviewdiv */
+.overviewDiv {
+    position: absolute;
+    width: 567px;
+    height: 201px;
+    left: 384px;
+    top: 0px;
+}
+
+/* overviewtext */
+.overviewTextDiv {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 3px;
+
+    position: absolute;
+    width: 128px;
+    height: 24px;
+    left: 488px;
+    top: 125px;
+}
+
+/* Rectangle 4 */
+.sideline {
+    width: 1px;
+    height: 20px;
+    
+    background: #000000;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Overview */
+.overviewText {
+    width: 93px;
+    height: 24px;
+
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #000000;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* overview */
+.overviewDivInfo {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 566px;
+    height: 132px;
+    left: 489px;
+    top: 154px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+}
+
+/* Born */
+.BornText {
+    position: absolute;
+    width: 37px;
+    height: 19px;
+    left: 11px;
+    top: 13px;
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #52555B;
+}
+
+/* September 9, 1991 · Columbia, South Carolina, USA */
+.BornInfo {
+    position: absolute;
+    width: 405px;
+    height: 19px;
+    left: 58px;
+    top: 13px;
+
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #747A84;
+}
+
+/* Height */
+.HeightText {
+    position: absolute;
+    width: 52px;
+    height: 19px;
+    left: 11px;
+    top: 57px;
+
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #52555B;
+}
+
+/* 1.70 m */
+.HeightInfo {
+    position: absolute;
+    width: 75px;
+    height: 19px;
+    left: 73px;
+    top: 57px;
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #747A84;
+}
+
+/* Parents */
+.ParentsText {
+    position: absolute;
+    width: 60px;
+    height: 19px;
+    left: 11px;
+    top: 98px;
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #52555B;
+}
+
+/* Jum Chow and Jean Chow */
+.ParentsInfo {
+    position: absolute;
+    width: 350px;
+    height: 19px;
+    left: 81px;
+    top: 98px;
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #747A84;
+}
+
+/* Official site */
+.officialSiteText {
+    position: absolute;
+    width: 89px;
+    height: 19px;
+    left: 11px;
+    top: 140px;
+    
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #52555B;
+}
+
+/* Instagram */
+.officialSiteInfo {
+    position: absolute;
+    width: 79px;
+    height: 19px;
+    left: 109px;
+    top: 140px;
+
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    
+    color: #1882FF;
+}
+
+/* line */
+.line {
+    width: 554px;
+    height: 1px;
+    
+    background: rgba(0, 0, 0, 0.12);
+}
+
+#overviewFirstLine {
+    position: absolute;
+    
+    left: 6px;
+    top: 45px;
+}
+
+/* line */
+#overviewSecondLine {
+    position: absolute;
+
+    left: 6px;
+    top: 86px;
+}
+
+/* line */
+#overviewThirdLine {
+    position: absolute;
+
+    left: 6px;
+    top: 128px;
+}
+
+.containerMainActor { 
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto; 
+
+    width: 100%;
+    padding: 20px;
+}
+
+/* Блок Биографии */
+.biographyDiv {
+    width: 629px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 851px;
+    margin-top: 210px;
+}
+
+.biographyTextDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    width: 128px;
+    height: 24px;
+}
+
+.biographySideline {
+    width: 1px;
+    height: 20px;
+    background: #000000;
+}
+
+.biographyText {
+    width: 99px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.biographyDivInfo {
+    width: 629px;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #52555B;
+}
+
+/* films(known her) */
+
+/* Надпись "Films and Serials" */
+.filmsAndSerialsTextDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    width: 128px;
+    height: 24px;
+}
+
+.filmsAndSerialsSideline {
+    width: 1px;
+    height: 20px;
+    background: #000000;
+    flex: none;
+}
+
+.filmsAndSerialsText {
+    width: 166px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    flex: none;
+}
+
+/* Сетка с фильмами */
+.filmsAndSerialsDivMain {
+    display: grid;
+    grid-template-columns: repeat(4, 140px); 
+    gap: 20px;
+    justify-items: center;
+    margin-left: 843px;  
+    margin-top: 20px;    
+}
+
+.filmsAndSerialsDiv {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 140px); 
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+.filmsAndSerialsInformationDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 128px;
+}
+
+#imgFilm {
+    height: 184px;
+    width: 128px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#filmTitle {
+    font-size: 12px;
+    margin: 0;
+    max-width: 128px;
+    text-align: left;
+    line-height: 1.2; 
+    height: 34px; 
+    overflow: hidden; 
+}
+
+.ratingFilmsAndSerials {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 15px;
+}
+
+#filmStars {
+    font-size: 16px;
+    color: #FFD700; 
+    margin: 0 0 5px;
+}
+
+#percentText {
+    font-size: 12px;
+    color: #555;
+    margin: 0 0 4px;
+}
+
+#descriptionFilm {
+    font-size: 10px;
+    color: gray;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 128px;
+}
+
+
+#ViewAllButtonFilmsAndSerials {
+    border-radius: 15px;
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    /* font-size: 12px; */
+
+    position: absolute;
+    left: 1350px;
+}
+
+#ViewAllButtonFilmsAndSerials:hover{
+    background-color: #1882FF;
+    transition: ease-in-out 300ms;
+    color: white;
+}
+
+/* footer {
+    position: absolute;
+    top: 1700px;
+} */
+
+
+/* image 41 */
+.actorImage {
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    left: 500px;
+    top: 82px;
+    
+    border-radius: 10px;
+}

@@ -24,7 +24,6 @@ interface IFilmInfoNames{
     genres: string | undefined,
     actors: string | undefined,
     description: string | undefined,
-
 }
 
 interface IPhotos{
@@ -32,7 +31,6 @@ interface IPhotos{
     photo2: string,
     photo3: string,
     photo4: string,
-
 }
 
 export function FilmPage() {
