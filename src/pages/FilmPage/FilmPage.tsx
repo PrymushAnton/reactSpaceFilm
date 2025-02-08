@@ -4,6 +4,9 @@ import { NowInTheatersCarousel } from "../../shared/NowInTheatersComponent/NowIn
 import { useFilmById } from "../../hooks/useFilmById"
 import { IFilm } from "../../shared/OneFilmInCatalog/OneFilmInCatalog"
 
+import { useRecentlyViewedFilmsContext } from "../../context/recentlyViewedFilmsContext"
+import { useEffect } from "react"
+
 interface IFilmInfo{
     ageRestriction: string | undefined,
     year: number | undefined,
@@ -36,6 +39,21 @@ interface IPhotos{
 export function FilmPage() {
     const params = useParams()
     const {film, isLoading, error} = useFilmById(Number(params.id))
+
+    const {recentlyViewedFilms, addFilm, removeFilm, isInContext} = useRecentlyViewedFilmsContext()
+
+    useEffect(() => {
+        if (film !== undefined) {
+            addFilm(film)
+
+        }
+
+    }, [film])
+
+    // useEffect(() => {
+    //     console.log(recentlyViewedFilms)
+    // }, [recentlyViewedFilms])
+
     const filmInfo: IFilmInfo = {
         ageRestriction: film?.ageRestriction,
         year: film?.year,
@@ -78,13 +96,12 @@ export function FilmPage() {
                                 const typedKeyNames = key as keyof IFilmInfoNames
                                 const value = filmInfo[typedKey]
                                 let tempString = ""
-                                console.log(value)
-                                Array.isArray(value) && value.forEach((data, index) => {
+                                Array.isArray(value) && value.forEach((data) => {
                                     tempString = tempString + data + ", "
                                 })
                                 tempString = tempString.slice(0, -2)
                                 
-                                return <tr key={index} className={index % 2 !== 0 ? "withBg" : undefined}>
+                                return <tr key={key} className={index % 2 !== 0 ? "withBg" : undefined}>
                                     <th className="infoName">
                                         {namesOfInfo[typedKeyNames]}:
                                     </th>
@@ -110,20 +127,16 @@ export function FilmPage() {
             <div id="photosOfFilmContainer">
                 <h2 id="photosText">Photos</h2>
                 <div id="photosOfFilm">
-                    {Object.keys(film ? film : {}).map((key, index) => {
+                    {Object.keys(film ? film : {}).map((key) => {
                         const typedKey = key as keyof IFilm
                         const value = film ? film[typedKey] : ""
                         
                         return key.includes("photo") && typeof value === "string"
-                        ? <img id="photoFromFilm" key={index} src={value} alt=""/>
+                        ? <img id="photoFromFilm" key={value} src={value} alt=""/>
                         : undefined
                     })}
                 </div>
-
-                
             </div>
-
-
 
            
             <div id="reviewsDiv">
@@ -132,7 +145,7 @@ export function FilmPage() {
                 </div>
                 <div id="reviews">
                     {film && film["reviews"].reverse().map((review, index) => {
-                        return <div className="review">
+                        return <div className="review" key={`${review.text}+${review.mark}+${review.user.src}`}>
                             <div className="profileInfo">
                                 <img className="userImage" src={review.user.src} alt="" />
                                 <h6>{review.user.name}</h6>
