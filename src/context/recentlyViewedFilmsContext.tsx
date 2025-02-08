@@ -6,19 +6,24 @@ import {
 	useState,
 } from "react";
 import { IFilm } from "../shared/OneFilmInCatalog/OneFilmInCatalog";
+import { useFilms } from "../hooks/useFilms";
 
 interface IRecentlyViewedFilmsContext {
 	recentlyViewedFilms: IFilm[];
+	recommendedFilms: IFilm[];
 	addFilm: (film: IFilm) => void;
 	removeFilm: (film: IFilm) => void;
 	isInContext: (film: IFilm) => void;
+	formRecomendations: () => void;
 }
 
 const initialValue = {
 	recentlyViewedFilms: [],
+	recommendedFilms: [],
 	addFilm: ({}) => {},
 	removeFilm: ({}) => {},
 	isInContext: ({}) => {},
+	formRecomendations: () => {}
 };
 
 const recentlyViewedFilmsContext =
@@ -36,15 +41,21 @@ export function RecentlyViewedFilmsContextProvider(
 ) {
 	const { children } = props;
 
+	const {films, isLoading, error} = useFilms()
+
 	const [recentlyViewedFilms, setRecentlyViewedFilms] = useState<IFilm[]>([]);
 
-	// useEffect(() => {
-	// 	console.log(recentlyViewedFilms);
-	// }, [recentlyViewedFilms]);
+	const [recommendedFilms, setRecommendedFilms] = useState<IFilm[]>([]);
+
+	useEffect(() => {}, [films])
+
+	useEffect(() => {
+		console.log(recommendedFilms);
+	}, [recommendedFilms]);
 
 	function addFilm(film: IFilm) {
         if (!isInContext(film)) {
-            if (recentlyViewedFilms.length < 3) {
+            if (recentlyViewedFilms.length < 6) {
                 let tempArray = [...recentlyViewedFilms, film];
                 setRecentlyViewedFilms(tempArray);
             } else {
@@ -65,13 +76,48 @@ export function RecentlyViewedFilmsContextProvider(
         return false
     }
 
+	function formRecomendations(){
+		if (recentlyViewedFilms.length > 0){
+			let tempGenresArray: string[] = []
+			recentlyViewedFilms.forEach((film) => {
+				film.genres.forEach((genre) => tempGenresArray.push(genre))
+			})
+
+			let genresSet = Array.from(new Set(tempGenresArray))
+
+			let objectGenresCount = Object.fromEntries(genresSet.map(genre => [genre, 0]))
+			tempGenresArray.forEach((genre) => {
+				objectGenresCount[genre] += 1
+			})
+
+			let genre = Object.entries(objectGenresCount)[0][0];
+			let genreCount = Object.entries(objectGenresCount)[0][1]
+
+			Object.keys(objectGenresCount).forEach((key) => {
+				if (objectGenresCount[key] > genreCount) {
+					genre = key
+					genreCount = objectGenresCount[key]
+				}
+			})
+
+			let filteredFilms = films.filter((film) => {
+				return film.genres.includes(genre) && !recentlyViewedFilms.some(viewed => viewed.id === film.id)
+			})
+			filteredFilms = filteredFilms?.slice(0, 6)
+			filteredFilms && setRecommendedFilms(filteredFilms)
+		}
+
+	}
+
 	return (
 		<recentlyViewedFilmsContext.Provider
 			value={{
 				recentlyViewedFilms: recentlyViewedFilms,
+				recommendedFilms: recommendedFilms,
 				addFilm: addFilm,
 				removeFilm: removeFilm,
 				isInContext: isInContext,
+				formRecomendations: formRecomendations
 			}}
 		>
 			{children}

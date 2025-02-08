@@ -1,0 +1,14 @@
+.carouselRecentlyViewedFilms { 
+    width: 100%;
+    margin-top: 80px;
+
+    grid-row: 3;
+    grid-column: 2 / span 5;
+
+}
+
+
+.carouselRecentlyViewedFilmsHidden{
+    display: none;
+}
+

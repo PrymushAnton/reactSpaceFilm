@@ -45,14 +45,9 @@ export function FilmPage() {
     useEffect(() => {
         if (film !== undefined) {
             addFilm(film)
-
         }
 
     }, [film])
-
-    // useEffect(() => {
-    //     console.log(recentlyViewedFilms)
-    // }, [recentlyViewedFilms])
 
     const filmInfo: IFilmInfo = {
         ageRestriction: film?.ageRestriction,
