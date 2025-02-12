@@ -31,7 +31,9 @@ export function ActorPage() {
 
     return (
         <div className='containerMainActor'>
-            <img className='actorImage' src={actor.src} alt="" />
+            <div className='actorDivImage'>
+                <img className='actorImage' src={actor.src} alt="" />
+            </div>
 
             <div className="Div">
                 <div className="Text">{actor.name}</div>
