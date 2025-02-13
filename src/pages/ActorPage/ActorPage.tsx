@@ -30,64 +30,67 @@ export function ActorPage() {
     const displayedFilms = showAllFilms ? actor.films : actor.films.slice(0, 4);
 
     return (
-        <div className='containerMainActor'>
-            <div className='actorDivImage'>
-                <img className='actorImage' src={actor.src} alt="" />
-            </div>
-
-            <div className="Div">
-                <div className="Text">{actor.name}</div>
-                <div className="hr"></div>
-            </div>
-
-            <div className='overviewDiv'>
-                <div className='overviewTextDiv'>
-                    <div className='sideline'></div>
-                    <div className='overviewText'>Overview</div>
+        <div className='MainOfMainDiv'>
+            <div className='containerMainActor'>
+                <div className='actorDivImage'>
+                    <img className='actorImage' src={actor.src} alt="" />
                 </div>
-                <div className='overviewDivInfo'>
-                    <div className='BornText'>Born</div>
-                    <div className='BornInfo'>{actor.bornInDate} · {actor.bornInCity} {actor.bornInCountry}</div>
-                    <div className='line' id='overviewFirstLine'></div>
-                    <div className='HeightText'>Height</div>
-                    <div className='HeightInfo'>{actor.height}</div>
-                    <div className='line' id='overviewSecondLine'></div>
-                    <div className='ParentsText'>Parents</div>
-                    <div className='ParentsInfo'>{actor.mother} and {actor.father}</div>
+        
+                <div className="Div">
+                    <div className="Text">{actor.name}</div>
+                    <div className="hr"></div>
                 </div>
-            </div>
-
-            <div className='biographyDiv'>
-                <div className='biographyTextDiv'>
-                    <div className='biographySideline'></div>
-                    <div className='biographyText'>Biography</div>
+        
+                <div className='overviewDiv'>
+                    <div className='overviewTextDiv'>
+                        <div className='sideline'></div>
+                        <div className='overviewText'>Overview</div>
+                    </div>
+                    <div className='overviewDivInfo'>
+                        <div className='BornText'>Born</div>
+                        <div className='BornInfo'>{actor.bornInDate} · {actor.bornInCity} {actor.bornInCountry}</div>
+                        <div className='line' id='overviewFirstLine'></div>
+                        <div className='HeightText'>Height</div>
+                        <div className='HeightInfo'>{actor.height}</div>
+                        <div className='line' id='overviewSecondLine'></div>
+                        <div className='ParentsText'>Parents</div>
+                        <div className='ParentsInfo'>{actor.mother} and {actor.father}</div>
+                    </div>
                 </div>
-                <div className='biographyDivInfo'>{actor.biography}</div>
-            </div>
-
-            <div className='filmsAndSerialsDivMain'>
-                <div className='filmsAndSerialsTextDiv'>
-                    <div className='filmsAndSerialsSideline'></div>
-                    <div className='filmsAndSerialsText'>Films and Serials</div>
-                    <button id="ViewAllButtonFilmsAndSerials" onClick={() => setShowAllFilms(!showAllFilms)}>
-                        {showAllFilms ? "Hide all" : "View All"}
-                    </button>
+        
+                <div className='biographyDiv'>
+                    <div className='biographyTextDiv'>
+                        <div className='biographySideline'></div>
+                        <div className='biographyText'>Biography</div>
+                    </div>
+                    <div className='biographyDivInfo'>{actor.biography}</div>
                 </div>
-
-                <div className="filmsAndSerialsDiv">
-                    {displayedFilms.map((film: { src: string; name: string; description: string; rating: number }, idx: number) => (
-                        <div className="filmsAndSerialsInformationDiv" key={idx}>
-                            <img id="imgFilm" src={film.src} alt={film.name} />
-                            <h5 id="filmTitle">{film.name}</h5>
-                            <div className='ratingFilmsAndSerials'>
-                                <p id="filmStars">{getStarsFromPercentage(film.rating)}</p>
-                                <p id="percentText">{film.rating}%</p>
+        
+                <div className='filmsAndSerialsDivMain'>
+                    <div className='filmsAndSerialsTextDiv'>
+                        <div className='filmsAndSerialsSideline'></div>
+                        <div className='filmsAndSerialsText'>Films and Serials</div>
+                        <button id="ViewAllButtonFilmsAndSerials" onClick={() => setShowAllFilms(!showAllFilms)}>
+                            {showAllFilms ? "Hide all" : "View All"}
+                        </button>
+                    </div>
+        
+                    <div className="filmsAndSerialsDiv">
+                        {displayedFilms.map((film: { src: string; name: string; description: string; rating: number }, idx: number) => (
+                            <div className="filmsAndSerialsInformationDiv" key={idx}>
+                                <img id="imgFilm" src={film.src} alt={film.name} />
+                                <h5 id="filmTitle">{film.name}</h5>
+                                <div className='ratingFilmsAndSerials'>
+                                    <p id="filmStars">{getStarsFromPercentage(film.rating)}</p>
+                                    <p id="percentText">{film.rating}%</p>
+                                </div>
+                                <p id="descriptionFilm">{film.description}</p>
                             </div>
-                            <p id="descriptionFilm">{film.description}</p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
+        
     );
 }
