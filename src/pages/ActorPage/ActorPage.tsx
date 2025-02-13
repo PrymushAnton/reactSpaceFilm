@@ -3,15 +3,6 @@ import { useActorById } from '../../hooks/useActorById';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-import RedOne from "./images/redOne.png";
-import Conclave from "./images/conclave.png";
-import bestChristmas from "./images/best christmas.png";
-import Heretic from "./images/heretic.png";
-import Juror2 from "./images/juror2.png";
-import Meanwhile from "./images/meanwhile.png";
-import Anora from "./images/anora.png";
-import Venom from "./images/venom.png";
-
 export function getStarsFromPercentage(percentage: number) {
     const stars = Math.floor(percentage / 20);
     const hasHalfStar = percentage % 20 >= 10;
