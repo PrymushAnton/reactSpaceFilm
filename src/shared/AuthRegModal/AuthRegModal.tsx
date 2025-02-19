@@ -48,43 +48,38 @@ export function AuthModal(){
                         : isRegShown && <h2>Sign Up</h2>
                     }
                 </Modal.Header>
+
+                
                 <Modal.Body id="AuthRegMiddle">
                     <form>
-                        
                         <div className="inputDiv">
-                            <h4 className="inputTitle">Username</h4>
+                            <h4 className="inputTitle">Email</h4>
                             <input type="text" className="inputText"/>
                         </div>
-
-                        {
-                            isRegShown 
-                            && <div className="inputDiv">
-                                <h4 className="inputTitle">Email</h4>
-                                <input type="text" className="inputText"/>
-                            </div>
-                        }
-                        
                         <div className="inputDiv">
-                            <h4 className="inputTitle">Password</h4>
+                            <div id="inputDivTop">
+                                <h4 className="inputTitle">Password</h4>
+                                <a id="forgotPassword">Forgot password?</a>
+                            </div>
                             <input type="password" className="inputText"/>
                         </div>
                     </form>
                 </Modal.Body>
                 
-                <Modal.Footer id="AuthRegBottom">
 
+                <Modal.Footer>
                     {
                         isLogShown
-                        ? <div>
+                        ? <div className="AuthBottom">
                             <input type="submit" value="Log In" id="submitButt"/>
-                            <button type="button" id="SignButt" onClick={() => {openRegIn()}} >Sign Up</button>
+                            <h5>New to SpaceFilm?</h5>
+                            <button type="button" id="SignButt" className="SignInUpQuest" onClick={() => {openRegIn()}} >Sign Up &gt;</button>
                         </div>
-                        : isRegShown && <div>
+                        : isRegShown && <div className="RegBottom">
                             <input type="submit" value="Sign Up" id="submitButt"/>
-                            <button type="button" id="SignButt" onClick={() => {openLogIn()}} >Log In</button>
+                            <h5>Already have an account?</h5>
+                            <button type="button" className="SignInUpQuest" onClick={() => {openLogIn()}} >Sign In &gt;</button>
                         </div>
-                   
-
                     }
                 </Modal.Footer>
                 

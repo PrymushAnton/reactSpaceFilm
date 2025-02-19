@@ -144,10 +144,8 @@ export function CatalogList(){
         })
 
         if (Object.keys(filters).length === 0 || isKeysEmpty){
-            console.log(1434298753485)
             setFilteredFilms(films)
         } else {
-            console.log(546456456546)
             setFilteredFilms(films.filter((film) => {
                 let conditionIsTrue = false
                 Object.keys(film).forEach((filmKey) => {

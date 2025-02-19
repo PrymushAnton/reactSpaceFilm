@@ -26,7 +26,6 @@ export function useFilms(){
             
         }
         getAllFilms()
-
     }, [])
 
     return {films: films, isLoading: isLoading, error: error}

@@ -49,15 +49,24 @@
     width: 300px;
 }
 
-#AuthRegBottom{
+.AuthBottom{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: 28%;
+}
+
+.RegBottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20%;
 }
 
 #submitButt{
     border: 0;
     padding: 10px;
+    padding-inline: 50px;
     margin: 10px;
     /* margin-left: auto;
     margin-right: auto; антон, я це на повному серйозі хотів це залишити, але передумав, так що посидиш тільки із 1 марджином))) (але він адекватний хоча б)*/ 
@@ -65,17 +74,8 @@
     width: min-content;
     background-color: #1882FF;
     color: white;
-    border-radius: 10px;
+    border-radius: 50px;
     align-self: center;
-}
-
-#SignButt{
-    border: 0;
-    border-radius: 10px;
-    height: max-content;
-    width: max-content;
-    align-self: center;
-    padding: 10px;
 }
 
 .inputTitle{
@@ -88,3 +88,27 @@
     background-color: transparent;
     color: white;
 }
+
+
+.SignInUpQuest{
+    background-color: transparent;
+    border: 0;
+    text-decoration: underline;
+    color: blue;
+}
+
+#forgotPassword{
+    text-decoration: underline;
+    color: blue;
+    width: max-content;
+}
+
+#inputDivTop{
+    display: flex;
+    text-align: start;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 300px;
+}
+

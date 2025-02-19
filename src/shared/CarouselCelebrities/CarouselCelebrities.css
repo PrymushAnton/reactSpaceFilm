@@ -27,7 +27,7 @@
 #MostPopularCelebritiesCont{
     padding: 20px;
     width: 100%;
-    grid-row: 4;
+    grid-row: 5;
     grid-column: 2 / span 5;
 }
 
