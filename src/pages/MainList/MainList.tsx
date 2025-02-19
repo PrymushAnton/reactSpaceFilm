@@ -4,6 +4,9 @@ import { NowInTheatersCarousel } from "../../shared/NowInTheatersComponent/NowIn
 import { RecentNewsSlider } from "../../shared/RecentNewsSlider/RecentNewsSlider"
 import { Slider } from "../../shared/Slider/Slider"
 import "./MainList.css"
+// import { AuthModal } from "../../shared/AuthRegModal/AuthRegModal"
+// import { RegModal } from "../../shared/AuthRegModal/AuthRegModal"
+
 
 import { useRecentlyViewedFilmsContext } from "../../context/recentlyViewedFilmsContext"
 import { useEffect } from "react"
@@ -25,7 +28,6 @@ export function MainList(){
         <div id="MainList">
             {/* <AuthModal></AuthModal> */}
             {/* <RegModal></RegModal> */}
-
             <ComingSoonSliderNew></ComingSoonSliderNew>
             {/* <Slider></Slider> */}
             {

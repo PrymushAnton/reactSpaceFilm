@@ -48,6 +48,7 @@ export function AuthModal(){
                         : isRegShown && <h2>Sign Up</h2>
                     }
                 </Modal.Header>
+
                 
                 <Modal.Body id="AuthRegMiddle">
                     <form>
@@ -65,6 +66,7 @@ export function AuthModal(){
                     </form>
                 </Modal.Body>
                 
+
                 <Modal.Footer>
                     {
                         isLogShown
