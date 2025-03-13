@@ -9,6 +9,8 @@ import { FilmPage } from '../pages/FilmPage/FilmPage'
 import { ActorPage } from '../pages/ActorPage/ActorPage'
 
 import { RecentlyViewedFilmsContextProvider } from '../context/recentlyViewedFilmsContext'
+import { AdminPage } from '../pages/AdminPage/AdminPage'
+import { ModelPage } from '../pages/ModelPage/ModelPage'
 
 
 
@@ -18,10 +20,12 @@ export function App(){
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout></Layout>}>
-                        <Route path='/' element={<MainList></MainList>}></Route>
-                        <Route path='/catalog' element={<CatalogList></CatalogList>}></Route>
-                        <Route path='/film/:id' element={<FilmPage></FilmPage>}></Route>
-                        <Route path='/actor/:id' element={<ActorPage></ActorPage>}></Route>
+                        <Route path='/' element={<MainList></MainList>}/>
+                        <Route path='/catalog' element={<CatalogList></CatalogList>}/>
+                        <Route path='/film/:id' element={<FilmPage></FilmPage>}/>
+                        <Route path='/actor/:id' element={<ActorPage></ActorPage>}/>
+                        <Route path='/admin/' element={<AdminPage></AdminPage>}/>
+                        <Route path='/admin/:name' element={<ModelPage></ModelPage>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

@@ -15,7 +15,7 @@ export function useFilmById(id: number){
         async function getAllFilms(){
             try{
                 setIsLoading(true)
-                const response = await fetch(`http://localhost:3001/film/${id}`)
+                const response = await fetch(`http://localhost:3001/api/film/${id}`)
                 const filmApi = await response.json()
                 setFilm(filmApi)
             } catch (error) {

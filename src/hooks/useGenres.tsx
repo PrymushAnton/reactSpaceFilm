@@ -19,13 +19,16 @@ export function useGenres(){
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>()
 
+    useEffect(() => {
+        console.log(genres)
+    }, [genres])
 
     useEffect(() => {
 
         async function getAllFilms(){
             try{
                 setIsLoading(true)
-                const response = await fetch('http://localhost:3001/genre/all')
+                const response = await fetch('http://localhost:3001/api/genre/all')
                 const genres = await response.json()
                 setGenres(genres)
             } catch (error) {

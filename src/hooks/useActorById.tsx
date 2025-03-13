@@ -10,7 +10,7 @@ export function useActorById(id: number) {
         async function getActor() {
             try {
                 setIsLoading(true)
-                const response = await fetch(`http://localhost:3001/actor/${id}`)
+                const response = await fetch(`http://localhost:3001/api/actor/${id}`)
                 const actorApi = await response.json()
                 setActor(actorApi)
             } catch (error) {
