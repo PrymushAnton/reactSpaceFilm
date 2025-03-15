@@ -11,6 +11,7 @@ import { ActorPage } from '../pages/ActorPage/ActorPage'
 import { RecentlyViewedFilmsContextProvider } from '../context/recentlyViewedFilmsContext'
 import { AdminPage } from '../pages/AdminPage/AdminPage'
 import { ModelPage } from '../pages/ModelPage/ModelPage'
+import { ChangeRecordPage } from '../pages/ChangeRecordPage/ChangeRecordPage'
 
 
 
@@ -26,6 +27,7 @@ export function App(){
                         <Route path='/actor/:id' element={<ActorPage></ActorPage>}/>
                         <Route path='/admin/' element={<AdminPage></AdminPage>}/>
                         <Route path='/admin/:name' element={<ModelPage></ModelPage>}/>
+                        <Route path='/admin/:name/:id' element={<ChangeRecordPage></ChangeRecordPage>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

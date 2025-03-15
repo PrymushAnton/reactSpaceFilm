@@ -17,17 +17,17 @@ export function AdminPage() {
                 </div>
 
                 <table className="modelsTable">
-                    {models.map((model, index) => {
+                    {models.map((model) => {
                         return (
                             <tr className="modelRow">
-                                <th className="modelTh"><Link to={`${model}/`}>{model}</Link></th>
+                                <th className="modelTh"><Link to={`/admin/${model.toLowerCase()}/`}>{model}</Link></th>
                                 
                                 <td className="modelTd">
-                                    <Link to="#"><FaPlus color="green"/>Add</Link>
+                                    <Link to="#"><FaPlus color="green" size={20}/>Add</Link>
                                 </td>
 
                                 <td className="modelTd">
-                                    <Link to={`${model}/`}><IoPencilSharp color="#e0c947"/>Change</Link>
+                                    <Link to={`/admin/${model.toLowerCase()}/`}><IoPencilSharp color="#e0c947" size={20}/>Change</Link>
                                 </td>
                             </tr>
                         )

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 
 
-interface IActorName{
+interface IRelationName{
     id: number
     name: string
 }
 
 export function useRecords(name: string){
 
-    const [records, setRecords] = useState<IActorName[]>([])
+    const [records, setRecords] = useState<IRelationName[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>("")
 
