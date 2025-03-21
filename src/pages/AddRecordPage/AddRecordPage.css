@@ -1,0 +1,89 @@
+.addRecordPage{
+    display: grid;
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+}
+
+
+.addRecordPageContainer{
+    grid-column: 2 / 7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addRecordPageTitle{
+    width: 100%;
+
+    display: flex;
+    align-items: center;    
+
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+    padding: 0 10px 10px 0;
+}
+
+.addRecordPageTitle h2 {
+    margin: 0;
+}
+
+.addRecordPageForm{
+    width: 100%;
+}
+
+
+.addRecordPageRow{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    height: 40px;
+    width: 100%;
+}
+
+.addRecordPageRow:nth-last-child(1){
+    border-bottom: none;
+}
+
+
+
+.addRecordPageTh{
+    padding: 10px;
+}
+
+
+.addRecordPageTd{
+    padding: 10px;
+    width: 100%;
+}
+
+.addRecordPageTdButton{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.addRecordPageButton{
+    padding: 0 10px;
+    height: 35px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.addRecordPageDelete{
+    background-color: rgb(221, 150, 150);
+}
+
+.addRecordPageSave{
+    background-color: rgb(150, 221, 156);
+}
+
+.addRecordPageError{
+    color: red;
+    margin: 0;
+}
+
+.addRecordPageTable th{
+    text-align: left;
+    vertical-align: top;
+}

@@ -1,0 +1,71 @@
+
+.modelPage{
+    display: grid;
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+}
+
+
+.modelPageContainer{
+    grid-column: 2 / 7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modelTitle{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+
+.modelsTable{
+    width: 100%;
+}
+
+
+.modelRow:nth-child(even){
+    background-color: rgb(243, 243, 243);
+}
+
+
+.modelRow:nth-child(odd){
+    background-color: rgb(208, 243, 255);
+}
+
+
+.modelRow{
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-left: none;
+    border-right: none;
+    height: 40px;
+}
+
+.modelTh{
+    padding: 10px;
+    width: 100%;
+}
+
+.modelTh a {
+    text-decoration: none;
+}
+
+.modelTd{
+    padding: 10px;
+}
+.modelTd a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+.modelPageAddRecord{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -12,6 +12,8 @@ import { RecentlyViewedFilmsContextProvider } from '../context/recentlyViewedFil
 import { AdminPage } from '../pages/AdminPage/AdminPage'
 import { ModelPage } from '../pages/ModelPage/ModelPage'
 import { ChangeRecordPage } from '../pages/ChangeRecordPage/ChangeRecordPage'
+import { AddRecordPage } from '../pages/AddRecordPage/AddRecordPage'
+import { DeleteRecordPage } from '../pages/DeleteRecordPage/DeleteRecordPage'
 
 
 
@@ -27,7 +29,11 @@ export function App(){
                         <Route path='/actor/:id' element={<ActorPage></ActorPage>}/>
                         <Route path='/admin/' element={<AdminPage></AdminPage>}/>
                         <Route path='/admin/:name' element={<ModelPage></ModelPage>}/>
-                        <Route path='/admin/:name/:id' element={<ChangeRecordPage></ChangeRecordPage>}/>
+                        <Route path='/admin/:name/update/:id' element={<ChangeRecordPage></ChangeRecordPage>}/>
+                        <Route path='/admin/:name/create' element={<AddRecordPage></AddRecordPage>}/>
+                        <Route path='/admin/:name/delete/:id' element={<DeleteRecordPage></DeleteRecordPage>}/>
+                        
+
                     </Route>
                 </Routes>
             </BrowserRouter>

@@ -23,7 +23,7 @@ export function AdminPage() {
                                 <th className="modelTh"><Link to={`/admin/${model.toLowerCase()}/`}>{model}</Link></th>
                                 
                                 <td className="modelTd">
-                                    <Link to="#"><FaPlus color="green" size={20}/>Add</Link>
+                                    <Link to={`/admin/${model.toLowerCase()}/create/`}><FaPlus color="green" size={20}/>Add</Link>
                                 </td>
 
                                 <td className="modelTd">
