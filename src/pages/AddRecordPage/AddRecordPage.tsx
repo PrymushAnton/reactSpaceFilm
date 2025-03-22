@@ -6,7 +6,7 @@ import { useRecords } from "../../hooks/useRecords"
 
 import { useForm } from "react-hook-form"
 import { useModelFields } from "../../hooks/useModelFields"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export function AddRecordPage() {
@@ -48,6 +48,10 @@ export function AddRecordPage() {
         }
     }
 
+    useEffect(() => {
+        console.log(fields)
+    }, [fields])
+
 
     return (
         <div className="addRecordPage">
@@ -59,52 +63,52 @@ export function AddRecordPage() {
                     </div>
 
                     <table className="addRecordPageTable">
-                        {/* {fields && Object.entries(fields).map(([key, value]) => {
+                        {fields && Object.entries(fields).map(([key, value]) => {
                             return (
                                 <tr className="addRecordPageRow" key={key}>
                                     <th className="addRecordPageTh">{String(key).charAt(0).toUpperCase() + String(key).slice(1)}</th>
                                     { 
                                         (value.type === "text" || value.type === "number")
                                         ? <td className="addRecordPageTd">
-                                            <input type={value.type} defaultValue={value.data} {...register(key, {
+                                            <input type={value.type} {...register(key, {
                                                 required: {value: true, message: "This field is required"},
                                             })}/>
                                             <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                         </td>
                                         : (value.type === "textarea")
                                             ? <td className="addRecordPageTd">
-                                                <textarea defaultValue={value.data} {...register(key, {
+                                                <textarea {...register(key, {
                                                     required: {value: true, message: "This field is required"},
                                                 })}/>
                                                 <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                             </td>
-                                            : (value.type === "manytomany" || value.type === "onetomany")
+                                            : (value.type === "manytomany")
                                                 ? <td className="addRecordPageTd">
-                                                    <select multiple={true} defaultValue={fields.films.data} {...register(key)}>
+                                                    {/* <select multiple={true} defaultValue={fields.films.data} {...register(key)}>
                                                         {records.map((record) => {
                                                             return (
                                                                 <option value={record.id} selected={value.data.includes(record.id)}>{record.name}</option>
                                                             )
                                                         })}
-                                                    </select>
+                                                    </select> */}
                                                     <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                                 </td>
                                                 : (value.type === "onetoone" || value.type === "manytoone")
                                                     && <td className="addRecordPageTd">
-                                                        <select {...register(key)}>
+                                                        {/* <select {...register(key)}>
                                                             {records.map((record) => {
                                                                 return (
                                                                     <option value={record.id}>{record.name}</option>
                                                                 )
                                                             })}
-                                                        </select>
+                                                        </select> */}
                                                         <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                                     </td>
                                     }
                                     
                                 </tr>
                             )
-                        })} */}
+                        })}
                         <tr className="addRecordPageRow">
                             <td></td>
                             <td>

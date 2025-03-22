@@ -8,6 +8,10 @@ import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 
 
+export interface ISubmitData{
+    [key: string]: number | string[] | string
+}
+
 export function ChangeRecordPage() {
 
     const {name, id} = useParams()
@@ -20,6 +24,7 @@ export function ChangeRecordPage() {
 
     const [manyFields, setManyFields] = useState<string[]>([])
     const [manyRecords, setManyRecords] = useState<IRelations>({})
+    
 
     useEffect(() => {
         console.log(record)
@@ -63,26 +68,22 @@ export function ChangeRecordPage() {
         }
     })
 
-    const {register, handleSubmit, formState, watch, getValues} = useForm<IRecord>({
+    const {register, handleSubmit, formState, reset} = useForm<ISubmitData>({
         mode: "onSubmit",
-        // defaultValues: {
-        //     actors: ["1", "2", "3"]
-        // }
+        defaultValues: obj
     })
 
 
-    async function onSubmitUpdate(data: IRecord){
+    async function onSubmitUpdate(data: ISubmitData){
         try{
             console.log(data)
-            console.log(obj)
-            console.log(getValues("actors"))
-            // const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/update`, { 
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json'},
-            //     body: JSON.stringify({id: id, ...data})
-            // })
-            // const result = await response.json()
-            // await navigate(`/admin/${name}`)
+            const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/update`, { 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({id: id, ...data})
+            })
+            const result = await response.json()
+            await navigate(`/admin/${name}`)
 
         } catch (error) {
 
@@ -91,7 +92,7 @@ export function ChangeRecordPage() {
 
     
 
-    async function onSubmitDelete(data: IRecord){
+    async function onSubmitDelete(data: ISubmitData){
         try{
             const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/delete`, { 
                 method: 'POST',
@@ -101,14 +102,13 @@ export function ChangeRecordPage() {
             const result = await response.json()
             await navigate(`/admin/${name}`)
 
-
         } catch (error) {
 
         }
     }
 
 
-    async function onSubmit(data: IRecord){
+    async function onSubmit(data: ISubmitData){
         if (button === "update") {
             await onSubmitUpdate(data)
         } else if (button === "delete"){
@@ -116,11 +116,9 @@ export function ChangeRecordPage() {
         }
     }
 
-
     useEffect(() => {
-        console.log(record)
+        reset(obj)
     }, [record])
-
 
     return (
         <div className="changeRecordPage">
@@ -153,8 +151,7 @@ export function ChangeRecordPage() {
                                             </td>
                                             : (value.type === "manytomany")
                                                 ? <td className="changeRecordPageTd">
-                                                    {/* record?.[key].data */}
-                                                    <select multiple={true} defaultValue={value.data} {...register(key)}>
+                                                    <select multiple={true} {...register(key)}>
                                                         {manyRecords[key]?.map((manyRecord) => {
                                                             return (
                                                                 <option value={String(manyRecord.id)} selected={value.data.includes(String(manyRecord.id))}>{manyRecord.name}</option>
