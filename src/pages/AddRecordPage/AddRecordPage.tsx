@@ -1,56 +1,153 @@
 import "./AddRecordPage.css"
 
 import { useNavigate, useParams } from "react-router-dom"
-import { IRecord } from "../../hooks/useOneRecord"
-import { useRecords } from "../../hooks/useRecords"
-
 import { useForm } from "react-hook-form"
 import { useModelFields } from "../../hooks/useModelFields"
 import { useEffect, useState } from "react"
+import { ISubmitData } from "../ChangeRecordPage/ChangeRecordPage"
+
+
+export interface IRelationName{
+    id: string
+    name: string
+}
+
+export interface IRelations{
+    [key: string]: IRelationName[]
+}
 
 
 export function AddRecordPage() {
 
-    const {name} = useParams()
-    const navigate = useNavigate()
-
-    const {fields} = useModelFields(name ? name : "")
-
     // const {record, isLoading, error: recordError} = useOneRecord(name as string)
 
     // const {records, isLoading: isLoadingRecord, error: errorRecord} = useRecords("film")
-    const [error, setError] = useState<string>("")
+    // const [error, setError] = useState<string>("")
 
-    const {register, handleSubmit, formState} = useForm<IRecord>({
-        mode: "onSubmit"
+    // const {register, handleSubmit, formState} = useForm<IRecord>({
+    //     mode: "onSubmit"
+    // })
+
+
+    const {name, id} = useParams()
+    const navigate = useNavigate()
+
+    const {fields: record} = useModelFields(name ? name : "")
+
+
+    // const {record, isLoading, error} = useOneRecord(name as string, id as string)
+
+
+    const [manyFields, setManyFields] = useState<string[]>([])
+    const [manyRecords, setManyRecords] = useState<IRelations>({})
+    
+    const [singleFields, setSingleFields] = useState<string[]>([])
+    const [singleRecords, setSingleRecords] = useState<IRelations>({})
+
+    useEffect(() => {
+        Object.entries(record ? record : {}).forEach(([key, value]) => {
+            if (value.type === "manytomany" || value.type === "onetomany") {
+                setManyFields(manyFields => [...manyFields, key])
+            } else if (value.type === "manytoone" || value.type === "onetoone") {
+                setSingleFields(singleFields => [...singleFields, key])
+            }
+        })
+    }, [record]) 
+
+    useEffect(() => {
+        async function getAllRecords(name: string){
+            try{
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -1)}/all/names`)
+                const recordsRes = await response.json()
+                setManyRecords(manyRecords => ({
+                    ...manyRecords,
+                    [name]: recordsRes
+                }));
+            } catch (error) {
+                if (error instanceof Error){
+                    console.log(error.message)
+                }
+            }
+            
+        }
+
+        manyFields.forEach((name) => {
+            getAllRecords(name)
+        })
+        
+    }, [manyFields])
+
+
+    useEffect(() => {
+        async function getAllRecords(name: string){
+            try{
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -2)}/all/names`)
+                const recordsRes = await response.json()
+                setSingleRecords(singleRecords => ({
+                    ...singleRecords,
+                    [name]: recordsRes
+                }));
+            } catch (error) {
+                if (error instanceof Error){
+                    console.log(error.message)
+                }
+            }
+            
+        }
+
+        singleFields.forEach((name) => {
+            getAllRecords(name)
+        })
+        
+    }, [singleFields])
+
+    
+    useEffect(() => {
+        reset(defaultValues)
+    }, [record])
+
+
+    
+    let defaultValues = {}
+
+    Object.entries(record ? record : {}).forEach(([key, value]) => {
+        if (value.type === "manytomany" || value.type === "onetomany" || value.type === "manytoone" || value.type === "onetoone") {
+            defaultValues = {...defaultValues, [key]: value.data}
+        }
     })
 
-    async function onSubmit(data: IRecord){
+    const {register, handleSubmit, formState, reset, setError} = useForm<ISubmitData>({
+        mode: "onSubmit",
+        defaultValues: defaultValues
+    })
+
+    async function onSubmit(data: ISubmitData){
+        console.log(data)
+
+        for (const [key, value] of Object.entries(data)) {
+            if (key.slice(-2) === "Id" && value === "0") {
+                setError(key, {
+                    type: "manual",
+                    message: "This field is required"
+                })
+                return
+            }
+        }
+
         try{
+            console.log(data)
             const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/create`, { 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({...data})
+                body: JSON.stringify(data)
             })
             const result = await response.json()
-            console.log(result)
-
-            if (result.status === "error") {
-                setError(result.message)
-                return
-            }
-            
             await navigate(`/admin/${name}`)
-            
 
         } catch (error) {
-            if (error instanceof Error) console.log(error)
+
         }
     }
-
-    useEffect(() => {
-        console.log(fields)
-    }, [fields])
 
 
     return (
@@ -63,7 +160,7 @@ export function AddRecordPage() {
                     </div>
 
                     <table className="addRecordPageTable">
-                        {fields && Object.entries(fields).map(([key, value]) => {
+                        {record && Object.entries(record).map(([key, value]) => {
                             return (
                                 <tr className="addRecordPageRow" key={key}>
                                     <th className="addRecordPageTh">{String(key).charAt(0).toUpperCase() + String(key).slice(1)}</th>
@@ -72,6 +169,16 @@ export function AddRecordPage() {
                                         ? <td className="addRecordPageTd">
                                             <input type={value.type} {...register(key, {
                                                 required: {value: true, message: "This field is required"},
+                                                ...(key === "mark" && {max: {value: 10, message: "Maximum value is 10" }}),
+                                                ...(key === "mark" && {min: {value: 0, message: "Minimum value is 0" }}),
+
+
+                                                ...(key === "year" && {max: {value: new Date().getFullYear(), message: `Maximum value is ${new Date().getFullYear()}` }}),
+                                                ...(key === "year" && {min: {value: 1888, message: "Minimum value is 1888" }}),
+
+                                                ...(key === "rating" && {max: {value: 10, message: "Maximum value is 10" }}),
+                                                ...(key === "rating" && {min: {value: 0, message: "Minimum value is 0" }}),
+
                                             })}/>
                                             <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                         </td>
@@ -84,38 +191,35 @@ export function AddRecordPage() {
                                             </td>
                                             : (value.type === "manytomany")
                                                 ? <td className="addRecordPageTd">
-                                                    {/* <select multiple={true} defaultValue={fields.films.data} {...register(key)}>
-                                                        {records.map((record) => {
+                                                    <select multiple={true} {...register(key)}>
+                                                        {manyRecords[key]?.map((manyRecord) => {
                                                             return (
-                                                                <option value={record.id} selected={value.data.includes(record.id)}>{record.name}</option>
+                                                                <option value={String(manyRecord.id)} selected={value.data.includes(String(manyRecord.id))}>{manyRecord.name}</option>
                                                             )
                                                         })}
-                                                    </select> */}
+                                                    </select>
                                                     <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                                 </td>
                                                 : (value.type === "onetoone" || value.type === "manytoone")
                                                     && <td className="addRecordPageTd">
-                                                        {/* <select {...register(key)}>
-                                                            {records.map((record) => {
+                                                        <select {...register(key, {
+                                                            required: {value: true, message: "This field is required"},
+                                                        })}>
+                                                            <option value="0" selected={true} disabled={true}>--- Choose an option ---</option>
+                                                            {singleRecords[key]?.map((singleRecord) => {
                                                                 return (
-                                                                    <option value={record.id}>{record.name}</option>
+                                                                    <option value={String(singleRecord.id)} selected={String(value.data) === String(singleRecord.id)}>{singleRecord.name}</option>
                                                                 )
                                                             })}
-                                                        </select> */}
+                                                        </select>
                                                         <p className="addRecordPageError">{formState.errors[key]?.message}</p>
                                                     </td>
                                     }
-                                    
                                 </tr>
                             )
                         })}
                         <tr className="addRecordPageRow">
                             <td></td>
-                            <td>
-                                <p className="addRecordPageError">
-                                    {error}
-                                </p>
-                            </td>
                             <td className="addRecordPageTd addRecordPageTdButton" colSpan={2}>
                                 <button type="submit" className="addRecordPageButton addRecordPageSave">CREATE</button>
                             </td>

@@ -12,7 +12,7 @@ interface IFilm{
     rating: number
 }
 
-
+// getting all genres for genresFilter
 export function useGenres(){
 
     const [genres, setGenres] = useState<IFilm[]>([])

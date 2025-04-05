@@ -6,7 +6,7 @@ export interface IRecord{
     name: string
 }
 
-
+// getting all records for single model
 export function useRecords(name: string){
 
     const [records, setRecords] = useState<IRecord[]>([])

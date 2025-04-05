@@ -20,6 +20,12 @@ export interface IManyToMany{
     data: string[]
 }
 
+export interface IOneToMany{
+    type: "onetomany",
+    data: string[]
+}
+
+
 export interface IManyToOne{
     type: "manytoone",
     data: string
@@ -32,10 +38,10 @@ export interface IOneToOne{
 
 
 export interface IRecord{
-    [key: string]: IText | INumber | ITextArea | IManyToMany | IManyToOne | IOneToOne;
+    [key: string]: IText | INumber | ITextArea | IManyToMany | IManyToOne | IOneToOne | IOneToMany;
 }
 
-
+// getting all info about single record
 export function useOneRecord(name: string, id: string){
 
     const [record, setRecord] = useState<IRecord>()
@@ -51,6 +57,7 @@ export function useOneRecord(name: string, id: string){
                 setIsLoading(true)
                 const response = await fetch(`http://localhost:3001/api/${name.toLowerCase()}/full/${id}`)
                 const recordRes = await response.json()
+                
                 setRecord(recordRes)
 
             } catch (error) {
@@ -65,6 +72,10 @@ export function useOneRecord(name: string, id: string){
         getOneRecord()
 
     }, [])
+
+    useEffect(() => {
+        console.log(record)
+    }, [record])
 
 
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { IFilm } from "../pages/CatalogList/CatalogList"
 
+// for getting all films for catalogList
 export function useFilms(){
 
     const [films, setFilms] = useState<IFilm[]>([])

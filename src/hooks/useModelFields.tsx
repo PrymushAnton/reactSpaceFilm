@@ -40,6 +40,7 @@ export interface IRecord{
     [key: string]: IText | INumber | ITextArea | IManyToMany | IOneToMany | IManyToOne | IOneToOne;
 }
 
+// getting all fields of a single model
 export function useModelFields(name: string){
 
     const [fields, setFields] = useState<IRecord>()

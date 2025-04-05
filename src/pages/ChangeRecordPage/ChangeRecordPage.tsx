@@ -2,7 +2,7 @@ import "./ChangeRecordPage.css"
 
 import { useNavigate, useParams } from "react-router-dom"
 import { useOneRecord, IRecord, IManyToMany, IManyToOne } from "../../hooks/useOneRecord"
-import { IRelations, useRelations,  } from "../../hooks/useRelations"
+// import { IRelations } from "../../hooks/useRelations"
 
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
@@ -11,6 +11,17 @@ import { useEffect, useState } from "react"
 export interface ISubmitData{
     [key: string]: number | string[] | string
 }
+
+export interface IRelationName{
+    id: string
+    name: string
+}
+
+export interface IRelations{
+    [key: string]: IRelationName[]
+}
+
+
 
 export function ChangeRecordPage() {
 
@@ -24,16 +35,21 @@ export function ChangeRecordPage() {
 
     const [manyFields, setManyFields] = useState<string[]>([])
     const [manyRecords, setManyRecords] = useState<IRelations>({})
-    
 
+    const [singleFields, setSingleFields] = useState<string[]>([])
+    const [singleRecords, setSingleRecords] = useState<IRelations>({})
+
+    
     useEffect(() => {
-        console.log(record)
         Object.entries(record ? record : {}).forEach(([key, value]) => {
-            if (value.type === "manytomany") {
+            if (value.type === "manytomany" || value.type === "onetomany") {
                 setManyFields(manyFields => [...manyFields, key])
+            } else if (value.type === "manytoone" || value.type === "onetoone") {
+                setSingleFields(singleFields => [...singleFields, key])
             }
         })
     }, [record]) 
+
 
     useEffect(() => {
         async function getAllRecords(name: string){
@@ -59,18 +75,50 @@ export function ChangeRecordPage() {
     }, [manyFields])
 
 
-    
-    let obj = {}
+    useEffect(() => {
+        async function getAllRecords(name: string){
+            try{
+                console.log(name)
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -2)}/all/names`)
+                const recordsRes = await response.json()
+                setSingleRecords(singleRecords => ({
+                    ...singleRecords,
+                    [name]: recordsRes
+                }));
+            } catch (error) {
+                if (error instanceof Error){
+                    console.log(error.message)
+                }
+            }
+            
+        }
+
+        singleFields.forEach((name) => {
+            getAllRecords(name)
+        })
+        
+    }, [singleFields])
+
+    useEffect(() => {
+        reset(defaultValues)
+    }, [record])
+
+    useEffect(() => {
+        console.log(singleRecords)
+    }, [singleRecords])
+
+    let defaultValues = {}
 
     Object.entries(record ? record : {}).forEach(([key, value]) => {
-        if (Array.isArray(value.data)) {
-            obj = {...obj, [key]: value.data}
+        if (value.type === "manytomany" || value.type === "onetomany" || value.type === "manytoone" || value.type === "onetoone") {
+            defaultValues = {...defaultValues, [key]: value.data}
         }
     })
 
+
     const {register, handleSubmit, formState, reset} = useForm<ISubmitData>({
         mode: "onSubmit",
-        defaultValues: obj
+        defaultValues: defaultValues
     })
 
 
@@ -90,7 +138,6 @@ export function ChangeRecordPage() {
         }
     }
 
-    
 
     async function onSubmitDelete(data: ISubmitData){
         try{
@@ -116,9 +163,7 @@ export function ChangeRecordPage() {
         }
     }
 
-    useEffect(() => {
-        reset(obj)
-    }, [record])
+
 
     return (
         <div className="changeRecordPage">
@@ -133,7 +178,7 @@ export function ChangeRecordPage() {
                         {record && Object.entries(record).map(([key, value]) => {
                             return (
                                 <tr className="changeRecordPageRow" key={key}>
-                                    <th className="changeRecordPageTh">{String(key).charAt(0).toUpperCase() + String(key).slice(1)}</th>
+                                    <th className="changeRecordPageTh">{!(String(key).slice(-2) === "Id") ? String(key).charAt(0).toUpperCase() + String(key).slice(1) :  String(key).charAt(0).toUpperCase() + String(key).slice(1, -2)}</th>
                                     { 
                                         (value.type === "text" || value.type === "number")
                                         ? <td className="changeRecordPageTd">
@@ -162,13 +207,13 @@ export function ChangeRecordPage() {
                                                 </td>
                                                 : (value.type === "onetoone" || value.type === "manytoone")
                                                     && <td className="changeRecordPageTd">
-                                                        {/* <select {...register(key)}>
-                                                            {record.map((rec) => {
+                                                        <select {...register(key)}>
+                                                            {singleRecords[key]?.map((singleRecord) => {
                                                                 return (
-                                                                    <option value={rec.id}>{rec.name}</option>
+                                                                    <option value={String(singleRecord.id)} selected={String(value.data) === String(singleRecord.id)}>{singleRecord.name}</option>
                                                                 )
                                                             })}
-                                                        </select> */}
+                                                        </select>
                                                         <p className="changeRecordPageError">{formState.errors[key]?.message}</p>
                                                     </td>
                                     }
