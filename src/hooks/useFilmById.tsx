@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { IFilm } from "../shared/OneFilmInCatalog/OneFilmInCatalog"
+import { Response } from "../shared/types/response"
 
 
-
+// used for FilmPage
 export function useFilmById(id: number){
 
     const [film, setFilm] = useState<IFilm>()
@@ -16,8 +17,13 @@ export function useFilmById(id: number){
             try{
                 setIsLoading(true)
                 const response = await fetch(`http://localhost:3001/api/film/${id}`)
-                const filmApi = await response.json()
-                setFilm(filmApi)
+                const result: Response<any> = await response.json()
+                if (result.status === "error"){
+                    setError(result.message)
+                    setIsLoading(false)
+                    return
+                }
+                setFilm(result.data)
             } catch (error) {
                 if (error instanceof Error){
                     setError(error.message)

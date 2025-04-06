@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"
 import { useModelFields } from "../../hooks/useModelFields"
 import { useEffect, useState } from "react"
 import { ISubmitData } from "../ChangeRecordPage/ChangeRecordPage"
+import { useUserContext } from "../../context/userContext"
+import { Response } from "../../shared/types/response"
 
 
 export interface IRelationName{
@@ -19,23 +21,19 @@ export interface IRelations{
 
 export function AddRecordPage() {
 
-    // const {record, isLoading, error: recordError} = useOneRecord(name as string)
-
-    // const {records, isLoading: isLoadingRecord, error: errorRecord} = useRecords("film")
-    // const [error, setError] = useState<string>("")
-
-    // const {register, handleSubmit, formState} = useForm<IRecord>({
-    //     mode: "onSubmit"
-    // })
-
-
-    const {name, id} = useParams()
     const navigate = useNavigate()
 
+    const {isAuthenticated, getToken} = useUserContext()
+
+    useEffect(() => {
+        if (!(isAuthenticated())) {
+            navigate("/")
+        }
+    }, [])
+
+    const {name, id} = useParams()
+
     const {fields: record} = useModelFields(name ? name : "")
-
-
-    // const {record, isLoading, error} = useOneRecord(name as string, id as string)
 
 
     const [manyFields, setManyFields] = useState<string[]>([])
@@ -57,11 +55,17 @@ export function AddRecordPage() {
     useEffect(() => {
         async function getAllRecords(name: string){
             try{
-                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -1)}/all/names`)
-                const recordsRes = await response.json()
+                const token = getToken()
+                if (token === "error") return
+
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -1)}/all/names`, {
+                    headers: {Authorization: `Bearer ${token}`}
+                })
+                const result: Response<any> = await response.json()
+                if (result.status === "error") return
                 setManyRecords(manyRecords => ({
                     ...manyRecords,
-                    [name]: recordsRes
+                    [name]: result.data
                 }));
             } catch (error) {
                 if (error instanceof Error){
@@ -81,11 +85,17 @@ export function AddRecordPage() {
     useEffect(() => {
         async function getAllRecords(name: string){
             try{
-                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -2)}/all/names`)
-                const recordsRes = await response.json()
+                const token = getToken()
+                if (token === "error") return
+
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -2)}/all/names`, {
+                    headers: {Authorization: `Bearer ${token}`}
+                })
+                const result: Response<any> = await response.json()
+                if (result.status === "error") return
                 setSingleRecords(singleRecords => ({
                     ...singleRecords,
-                    [name]: recordsRes
+                    [name]: result.data
                 }));
             } catch (error) {
                 if (error instanceof Error){
@@ -135,13 +145,17 @@ export function AddRecordPage() {
         }
 
         try{
-            console.log(data)
+            const token = getToken()
+            if (token === "error") return
             const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/create`, { 
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify(data)
             })
-            const result = await response.json()
+            await response.json()
             await navigate(`/admin/${name}`)
 
         } catch (error) {

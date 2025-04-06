@@ -12,6 +12,10 @@ export interface IReview{
     user: IUser
 }
 
+interface IActor{
+    name:string
+    id: number
+}
 
 export interface IFilm{
     id: number,
@@ -28,7 +32,7 @@ export interface IFilm{
     photo2: string,
     photo3: string,
     photo4: string,
-    actors: string[],
+    actors: IActor[] | string[],
     reviews: IReview[]
 }
 

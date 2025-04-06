@@ -1,13 +1,23 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./ModelPage.css";
 import { IRecord, useRecords } from "../../hooks/useRecords";
 import { IoPencilSharp } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { useUserContext } from "../../context/userContext";
 
 
 export function ModelPage() {
+
+    const navigate = useNavigate()
+    const {isAuthenticated} = useUserContext()
+    
+    useEffect(() => {
+        if (!(isAuthenticated())) {
+            navigate("/")
+        }
+    }, [])
 
     const {name} = useParams()
 

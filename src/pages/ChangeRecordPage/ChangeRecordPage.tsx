@@ -1,11 +1,12 @@
 import "./ChangeRecordPage.css"
 
 import { useNavigate, useParams } from "react-router-dom"
-import { useOneRecord, IRecord, IManyToMany, IManyToOne } from "../../hooks/useOneRecord"
-// import { IRelations } from "../../hooks/useRelations"
+import { useOneRecord } from "../../hooks/useOneRecord"
 
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
+import { useUserContext } from "../../context/userContext"
+import { Response } from "../../shared/types/response"
 
 
 export interface ISubmitData{
@@ -25,8 +26,17 @@ export interface IRelations{
 
 export function ChangeRecordPage() {
 
-    const {name, id} = useParams()
     const navigate = useNavigate()
+
+    const {isAuthenticated, getToken} = useUserContext()
+
+    useEffect(() => {
+        if (!(isAuthenticated())) {
+            navigate("/")
+        }
+    }, [])
+    
+    const {name, id} = useParams()
 
 
     const [button, setButton] = useState<"delete" | "update">("update")
@@ -54,11 +64,19 @@ export function ChangeRecordPage() {
     useEffect(() => {
         async function getAllRecords(name: string){
             try{
-                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -1)}/all/names`)
-                const recordsRes = await response.json()
+                const token = getToken()
+                if (token === "error") return
+
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -1)}/all/names`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                const result: Response<any> = await response.json()
+                if (result.status === "error") return
                 setManyRecords(manyRecords => ({
                     ...manyRecords,
-                    [name]: recordsRes
+                    [name]: result.data
                 }));
             } catch (error) {
                 if (error instanceof Error){
@@ -78,12 +96,19 @@ export function ChangeRecordPage() {
     useEffect(() => {
         async function getAllRecords(name: string){
             try{
-                console.log(name)
-                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -2)}/all/names`)
-                const recordsRes = await response.json()
+                const token = getToken()
+                if (token === "error") return
+
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase().slice(0, -2)}/all/names`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                const result: Response<any> = await response.json()
+                if (result.status === "error") return
                 setSingleRecords(singleRecords => ({
                     ...singleRecords,
-                    [name]: recordsRes
+                    [name]: result.data
                 }));
             } catch (error) {
                 if (error instanceof Error){
@@ -124,13 +149,18 @@ export function ChangeRecordPage() {
 
     async function onSubmitUpdate(data: ISubmitData){
         try{
-            console.log(data)
+            const token = getToken()
+            if (token === "error") return
+
             const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/update`, { 
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({id: id, ...data})
             })
-            const result = await response.json()
+            await response.json()
             await navigate(`/admin/${name}`)
 
         } catch (error) {
@@ -141,12 +171,17 @@ export function ChangeRecordPage() {
 
     async function onSubmitDelete(data: ISubmitData){
         try{
+            const token = getToken()
+            if (token === "error") return
             const response = await fetch(`http://localhost:3001/api/${name?.toLowerCase()}/delete`, { 
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({id: id})
             })
-            const result = await response.json()
+            await response.json()
             await navigate(`/admin/${name}`)
 
         } catch (error) {
@@ -156,10 +191,13 @@ export function ChangeRecordPage() {
 
 
     async function onSubmit(data: ISubmitData){
+        const newData = Object.fromEntries(
+            Object.entries(data).filter(([key, value]) => {return key !== "password" && key !== "email"})
+        );
         if (button === "update") {
-            await onSubmitUpdate(data)
+            await onSubmitUpdate(newData)
         } else if (button === "delete"){
-            await onSubmitDelete(data)
+            await onSubmitDelete(newData)
         }
     }
 
@@ -179,8 +217,13 @@ export function ChangeRecordPage() {
                             return (
                                 <tr className="changeRecordPageRow" key={key}>
                                     <th className="changeRecordPageTh">{!(String(key).slice(-2) === "Id") ? String(key).charAt(0).toUpperCase() + String(key).slice(1) :  String(key).charAt(0).toUpperCase() + String(key).slice(1, -2)}</th>
-                                    { 
-                                        (value.type === "text" || value.type === "number")
+                                    {
+                                        (key === "password" || key === "email") 
+                                        ? <td className="changeRecordPageTd">
+                                            <input type={value.type} defaultValue={value.data} disabled={true} {...register(key)}/>
+                                            <p className="changeRecordPageError">{formState.errors[key]?.message}</p>
+                                        </td>
+                                        : (value.type === "text" || value.type === "number")
                                         ? <td className="changeRecordPageTd">
                                             <input type={value.type} defaultValue={value.data} {...register(key, {
                                                 required: {value: true, message: "This field is required"}
@@ -196,6 +239,7 @@ export function ChangeRecordPage() {
                                             </td>
                                             : (value.type === "manytomany")
                                                 ? <td className="changeRecordPageTd">
+
                                                     <select multiple={true} {...register(key)}>
                                                         {manyRecords[key]?.map((manyRecord) => {
                                                             return (

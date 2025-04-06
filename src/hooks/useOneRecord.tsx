@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Response } from "../shared/types/response"
+import { useUserContext } from "../context/userContext"
 
 export interface IText{
     type: "text",
@@ -44,10 +46,12 @@ export interface IRecord{
 // getting all info about single record
 export function useOneRecord(name: string, id: string){
 
+    const {getToken} = useUserContext()
+    
+
     const [record, setRecord] = useState<IRecord>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>("")
-
 
 
     useEffect(() => {
@@ -55,10 +59,20 @@ export function useOneRecord(name: string, id: string){
         async function getOneRecord(){
             try{
                 setIsLoading(true)
-                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase()}/full/${id}`)
-                const recordRes = await response.json()
-                
-                setRecord(recordRes)
+
+                const token = getToken()
+                if (token === "error") return
+
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase()}/full/${id}`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                })
+                const result: Response<IRecord> = await response.json()
+                if (result.status === "error"){
+                    setError(result.message)
+                    setIsLoading(false)
+                    return
+                }
+                setRecord(result.data)
 
             } catch (error) {
                 if (error instanceof Error){
@@ -72,12 +86,6 @@ export function useOneRecord(name: string, id: string){
         getOneRecord()
 
     }, [])
-
-    useEffect(() => {
-        console.log(record)
-    }, [record])
-
-
 
     return {
         record: record,

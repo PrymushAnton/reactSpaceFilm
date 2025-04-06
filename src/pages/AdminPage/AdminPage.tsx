@@ -1,14 +1,25 @@
 import "./AdminPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useModels } from "../../hooks/useModels";
-
 import { FaPlus } from "react-icons/fa6";
 import { IoPencilSharp } from "react-icons/io5";
+import { useUserContext } from "../../context/userContext";
+import { useEffect } from "react";
 
 
 
 
 export function AdminPage() {
+    const navigate = useNavigate()
+
+    const {isAuthenticated} = useUserContext()
+
+    useEffect(() => {
+        if (!(isAuthenticated())) {
+            navigate("/")
+        }
+    }, [])
+    
 
     const { models, isLoading, error } = useModels()
 

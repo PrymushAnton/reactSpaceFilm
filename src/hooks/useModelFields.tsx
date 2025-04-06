@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Response } from "../shared/types/response"
+import { useUserContext } from "../context/userContext"
 
 export interface IText{
     type: "text",
@@ -43,6 +45,8 @@ export interface IRecord{
 // getting all fields of a single model
 export function useModelFields(name: string){
 
+    const {getToken} = useUserContext()
+
     const [fields, setFields] = useState<IRecord>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>("")
@@ -52,9 +56,21 @@ export function useModelFields(name: string){
         async function getAllFields(){
             try{
                 setIsLoading(true)
-                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase()}/fields`)
-                const fields = await response.json()
-                setFields(fields)
+
+                const token = getToken()
+                if (token === "error") return
+
+                const response = await fetch(`http://localhost:3001/api/${name.toLowerCase()}/fields`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                })
+                
+                const result: Response<IRecord> = await response.json()
+                if (result.status === "error"){
+                    setError(result.message)
+                    setIsLoading(false)
+                    return
+                }
+                setFields(result.data)
             } catch (error){
                 if (error instanceof Error) setError(error.message)
             } finally {

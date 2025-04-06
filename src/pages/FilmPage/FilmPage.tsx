@@ -1,11 +1,15 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import "./FilmPage.css"
-import { NowInTheatersCarousel } from "../../shared/NowInTheatersComponent/NowInTheatersCarousel"
 import { useFilmById } from "../../hooks/useFilmById"
 import { IFilm } from "../../shared/OneFilmInCatalog/OneFilmInCatalog"
 
 import { useRecentlyViewedFilmsContext } from "../../context/recentlyViewedFilmsContext"
 import { useEffect } from "react"
+
+interface IActor{
+    name: string
+    id: number
+}
 
 interface IFilmInfo{
     ageRestriction: string | undefined,
@@ -14,7 +18,7 @@ interface IFilmInfo{
     baseLanguage: string | undefined,
     homeCountry: string | undefined,
     genres: string[] | undefined,
-    actors: string[] | undefined,
+    actors: IActor[] | string[] | undefined,
     description: string | undefined,
 }
 
@@ -71,10 +75,6 @@ export function FilmPage() {
         description: "Опис"
     }
 
-    // const photosOfFilm: IPhotos = {
-    //     photo1: 
-    // }
-
     return (
         <div id="FilmList">
             <div id="filmInfoContainer">
@@ -91,11 +91,11 @@ export function FilmPage() {
                                 const typedKeyNames = key as keyof IFilmInfoNames
                                 const value = filmInfo[typedKey]
                                 let tempString = ""
-                                Array.isArray(value) && value.forEach((data) => {
+                                Array.isArray(value) && typedKey === "genres" && value.forEach((data) => {
                                     tempString = tempString + data + ", "
                                 })
                                 tempString = tempString.slice(0, -2)
-                                
+                                console.log(value)
                                 return <tr key={key} className={index % 2 !== 0 ? "withBg" : undefined}>
                                     <th className="infoName">
                                         {namesOfInfo[typedKeyNames]}:
@@ -103,7 +103,9 @@ export function FilmPage() {
                                     <td className="infoData">
                                         {
                                             Array.isArray(value)
-                                            ? tempString
+                                            ? value.map((actor) => {
+                                                return typeof(actor) === "string" ? tempString : <span><Link className="actorLink" to={`/actor/${actor.id}`}>{actor.name}</Link>, </span>
+                                            })
                                             : value
                                         }
                                     </td>

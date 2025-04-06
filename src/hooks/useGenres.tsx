@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-
+import {Response} from "../shared/types/response"
 
 interface IFilm{
     id: number,
@@ -20,17 +20,18 @@ export function useGenres(){
     const [error, setError] = useState<string>()
 
     useEffect(() => {
-        console.log(genres)
-    }, [genres])
-
-    useEffect(() => {
 
         async function getAllFilms(){
             try{
                 setIsLoading(true)
                 const response = await fetch('http://localhost:3001/api/genre/all')
-                const genres = await response.json()
-                setGenres(genres)
+                const result: Response<IFilm[]> = await response.json()
+                if (result.status === "error") {
+                    setError(result.message)
+                    setIsLoading(false)
+                    return
+                }
+                setGenres(result.data)
             } catch (error) {
                 if (error instanceof Error){
                     setError(error.message)
