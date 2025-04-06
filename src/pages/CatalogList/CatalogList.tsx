@@ -165,6 +165,9 @@ export function CatalogList(){
         }
     }, [filters, films])
 
+    useEffect(() => {
+        console.log(filteredFilms)
+    }, [filteredFilms])
 
     return (
         <div id="CatalogList">

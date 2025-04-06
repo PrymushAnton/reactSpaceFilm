@@ -1,0 +1,89 @@
+.changeRecordPage{
+    display: grid;
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+}
+
+
+.changeRecordPageContainer{
+    grid-column: 2 / 7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.changeRecordPageTitle{
+    width: 100%;
+
+    display: flex;
+    align-items: center;    
+
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+    padding: 0 10px 10px 0;
+}
+
+.changeRecordPageTitle h2 {
+    margin: 0;
+}
+
+.changeRecordPageForm{
+    width: 100%;
+}
+
+
+.changeRecordPageRow{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    height: 40px;
+    width: 100%;
+}
+
+.changeRecordPageRow:nth-last-child(1){
+    border-bottom: none;
+}
+
+
+
+.changeRecordPageTh{
+    padding: 10px;
+}
+
+
+.changeRecordPageTd{
+    padding: 10px;
+    width: 100%;
+}
+
+.changeRecordPageTdButton{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.changeRecordPageButton{
+    padding: 0 10px;
+    height: 35px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.changeRecordPageDelete{
+    background-color: rgb(221, 150, 150);
+}
+
+.changeRecordPageSave{
+    background-color: rgb(150, 221, 156);
+}
+
+.changeRecordPageError{
+    color: red;
+    margin: 0;
+}
+
+.changeRecordPageTable th{
+    text-align: left;
+    vertical-align: top;
+}

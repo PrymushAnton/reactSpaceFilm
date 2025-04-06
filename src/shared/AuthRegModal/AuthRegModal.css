@@ -44,9 +44,10 @@
 
 .inputText{
     background-color: #ECECEC;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 1px solid black;
     width: 300px;
+    padding-left: 10px;
 }
 
 .AuthBottom{
@@ -103,7 +104,7 @@
     width: max-content;
 }
 
-#inputDivTop{
+/* #inputDivTop{
     display: flex;
     text-align: start;
     align-items: center;
@@ -111,4 +112,4 @@
     position: relative;
     width: 300px;
 }
-
+ */

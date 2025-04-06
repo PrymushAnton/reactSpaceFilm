@@ -32,7 +32,7 @@ header a {
 #catalogNews {
     grid-column: 4;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     justify-content: center;
     align-items: center;
     column-gap: 30px;
@@ -50,7 +50,7 @@ header a {
 #searchLogin{
     grid-column: 6;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     justify-content: center;
     align-items: center;
     column-gap: 30px;
