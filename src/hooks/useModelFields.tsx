@@ -59,7 +59,7 @@ export function useModelFields(name: string){
 
                 const token = getToken()
                 if (token === "error") return
-
+                
                 const response = await fetch(`http://localhost:3001/api/${name.toLowerCase()}/fields`, {
                     headers: { Authorization: `Bearer ${token}` },
                 })

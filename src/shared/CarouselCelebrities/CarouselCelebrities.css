@@ -12,8 +12,21 @@
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin-left: 80%;
+    /* margin-left: 80%; */
     
+}
+
+.carousel-control-prev, .carousel-control-next{
+    padding: 0 !important;
+    width: 4% !important;
+}
+
+.carousel-control-prev{
+    justify-content: start !important;
+}
+
+.carousel-control-next{
+    justify-content: end !important;
 }
 
 .carousel-control-prev-icon{
@@ -21,7 +34,7 @@
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin-right: 80%;
+    /* margin-right: 80%; */
 }
 
 #MostPopularCelebritiesCont{
@@ -52,8 +65,6 @@
 }
 
 #sliderPageDiv{
-    /* display: flex; */
-    /* gap: 30px; */
     padding: 40px;
 
     display: grid;
@@ -65,6 +76,7 @@
 #celebrityDiv{
     text-align: center;
     width: 150px;
+    text-decoration: none !important;
 }
 
 .img-thumbnail{

@@ -9,19 +9,16 @@ export function Header() {
     
     return (
         <header>
-            <h1 id="logoHeader"><Link to="/">SpaceFilm</Link></h1>
             
-            <div id="catalogNews">
+            <div id="leftContainerHeader">
+                <h1 id="logoHeader"><Link to="/">SpaceFilm</Link></h1>
+
                 <Link to="/catalog">Catalog</Link>
-                <Link to="/news">News</Link>
                 {
                     isAdmin() && <Link to="/admin">Admin Panel</Link>
                 }
-                {/* <a href="" id="Catalog">Catalog</a>
-                <a href="" id="News">News</a> */}
             </div>
             <div id="searchLogin">
-                {/* <input type="text" name="" id="inputSearch" placeholder="Search"/> */}
                 <AuthModal></AuthModal> 
             </div>
         </header>

@@ -2,19 +2,15 @@
 
 header {
     grid-row: 1;
-    /* grid-column: 1 / span 7; */
     position: fixed;
     z-index: 1000;
-
-    
     background-color: #1882FF;
     display: grid;
-    grid-template-columns: 13% auto auto auto auto auto 13%;
+    grid-template-columns: 13% auto auto auto 13%;
     align-items: center;
     height: 60px;
     width: 100%;
     color: white;
-    /* margin-bottom: 20px; */
 }
 
 header a {
@@ -48,7 +44,7 @@ header a {
 }
 
 #searchLogin{
-    grid-column: 6;
+    grid-column: 4;
     display: grid;
     grid-template-columns: auto;
     justify-content: center;
@@ -59,9 +55,10 @@ header a {
     min-height: 0;
 }
 
-
-@media (max-width: 1024px){
-    header {
-        grid-template-columns: 10% auto auto auto auto auto 10%;
-    }
+#leftContainerHeader{
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    gap: 50px;
 }
+
