@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import "./Header.css"
-import { AuthModal } from "../AuthRegModal/AuthRegModal"
+import { AuthRegModal } from "../AuthRegModal/AuthRegModal"
 import { useUserContext } from "../../context/userContext"
 
 
 export function Header() {
-    const {isAdmin} = useUserContext()
+    const {isAdmin, user, isAuthenticated} = useUserContext()
     
     return (
         <header>
@@ -19,7 +19,14 @@ export function Header() {
                 }
             </div>
             <div id="searchLogin">
-                <AuthModal></AuthModal> 
+                <AuthRegModal></AuthRegModal>
+                {
+                    isAuthenticated() &&
+                    <Link to={"/profile"} className="userInfoHeader">
+                        {user && user.name.length > 10 ? user.name.slice(0, 10) + "..." : user?.name}
+                        <img src={user?.src} alt="" className="userImageHeader"/>
+                    </Link>
+                }
             </div>
         </header>
     )

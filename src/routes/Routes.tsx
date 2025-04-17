@@ -11,6 +11,7 @@ import { ActorPage } from '../pages/ActorPage/ActorPage'
 import { CatalogList } from "../pages/CatalogList/CatalogList"
 import { MainList } from '../pages/MainList/MainList'
 import { DeleteRecordPage } from '../pages/DeleteRecordPage/DeleteRecordPage'
+import { ProfilePage } from '../pages/ProfilePage/ProfilePage'
 
 
 export function AppRoutes(){
@@ -20,6 +21,7 @@ export function AppRoutes(){
                 <Route path="/" element={<Layout></Layout>}>
                     <Route path='/' element={<MainList></MainList>}/>
                     <Route path='/catalog' element={<CatalogList></CatalogList>}/>
+                    <Route path='/profile' element={<ProfilePage></ProfilePage>}/>
                     <Route path='/film/:id' element={<FilmPage></FilmPage>}/>
                     <Route path='/actor/:id' element={<ActorPage></ActorPage>}/>
                     <Route path='/admin/' element={<AdminPage></AdminPage>}/>

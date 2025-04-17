@@ -7,6 +7,7 @@ interface IUser {
 	name: string;
 	src: string;
 	role: string;
+	age: number;
 }
 
 interface IUserContext {
@@ -16,7 +17,8 @@ interface IUserContext {
 		email: string,
 		name: string,
 		src: string,
-		password: string
+		password: string,
+		age: number
 	) => void;
 	isAuthenticated: () => boolean;
 	logout: () => void;
@@ -31,7 +33,8 @@ const initialValue: IUserContext = {
 		email: string,
 		name: string,
 		src: string,
-		password: string
+		password: string,
+		age: number
 	) => {},
 	isAuthenticated: () => false,
 	logout: () => {},
@@ -91,7 +94,8 @@ export function UserContextProvider(props: IUserContextProviderProps) {
 		email: string,
 		name: string,
 		src: string,
-		password: string
+		password: string,
+		age: number
 	) {
 		try {
 			const response = await fetch(
@@ -104,6 +108,7 @@ export function UserContextProvider(props: IUserContextProviderProps) {
 						name: name,
 						src: src,
 						password: password,
+						age: age
 					}),
 				}
 			);

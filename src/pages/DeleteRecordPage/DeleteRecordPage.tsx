@@ -5,10 +5,9 @@ import { useUserContext } from "../../context/userContext";
 
 
 export function DeleteRecordPage() {
-    const {getToken} = useUserContext()
+    const {getToken, isAuthenticated} = useUserContext()
 
     const navigate = useNavigate()
-    const {isAuthenticated} = useUserContext()
     
     useEffect(() => {
         if (!(isAuthenticated())) {

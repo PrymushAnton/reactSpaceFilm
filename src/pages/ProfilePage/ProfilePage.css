@@ -1,0 +1,27 @@
+
+
+.profilePage{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+    grid-template-rows: auto auto auto;
+}
+
+.userDataProfile{
+    grid-column: 2 / 7;
+    grid-row: 1;
+    display: flex;
+    gap: 15px;
+}
+
+.userImageProfile{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.favouriteFilmsSlider{
+    grid-column: 2 / 7;
+    grid-row: 2;
+    
+}

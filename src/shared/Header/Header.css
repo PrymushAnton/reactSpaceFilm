@@ -46,7 +46,7 @@ header a {
 #searchLogin{
     grid-column: 4;
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
     justify-content: center;
     align-items: center;
     column-gap: 30px;
@@ -60,5 +60,21 @@ header a {
     display: flex;
     align-items: center;
     gap: 50px;
+}
+
+.userInfoHeader{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.userInfoHeader:hover{
+    text-decoration: underline;
+}
+
+.userImageHeader{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 }
 
