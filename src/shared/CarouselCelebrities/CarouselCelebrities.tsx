@@ -32,6 +32,7 @@ export function CarouselCelebrities() {
                     <h6 id='byRankingText'>BY RANKING</h6>
                 </div>
             </div>
+            
             <Carousel
                 interval={null}
                 nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" />}

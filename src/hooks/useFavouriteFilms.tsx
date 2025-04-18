@@ -15,7 +15,7 @@ export function useFavouriteFilms(){
 
     const {getToken} = useUserContext()
 
-    const [films, setFields] = useState<IFavouriteFilm[]>()
+    const [films, setFilms] = useState<IFavouriteFilm[]>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>("")
 
@@ -26,7 +26,10 @@ export function useFavouriteFilms(){
                 setIsLoading(true)
 
                 const token = getToken()
-                if (token === "error") return
+                if (token === "error") {
+                    setError("Token not found")
+                    return
+                }
                 
                 const response = await fetch(`http://localhost:3001/api/user/get-favourite-films`, {
                     headers: { Authorization: `Bearer ${token}` },
@@ -38,7 +41,7 @@ export function useFavouriteFilms(){
                     setIsLoading(false)
                     return
                 }
-                setFields(result.data)
+                setFilms(result.data)
             } catch (error){
                 if (error instanceof Error) setError(error.message)
             } finally {

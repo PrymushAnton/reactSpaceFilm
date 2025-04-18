@@ -84,7 +84,9 @@ export function AuthRegModal(){
                             <div className="inputDiv">
                                 <h4 className="inputTitle">Name</h4>
                                 <input type="text" className="inputText" {...register("name", {
-                                    required: {value: true, message: "This field is required"}
+                                    required: {value: true, message: "This field is required"},
+                                    maxLength: {value: 20, message: "Max length is 20"},
+                                    minLength: {value: 5, message: "Min length is 5"}
                                 })}/>
                                 <p>{formState.errors.name?.message}</p>
                             </div>
@@ -92,14 +94,18 @@ export function AuthRegModal(){
                         <div className="inputDiv">
                             <h4 className="inputTitle">Email</h4>
                             <input type="text" className="inputText" {...register("email", {
-                                required: {value: true, message: "This field is required"}
+                                required: {value: true, message: "This field is required"},
+                                maxLength: {value: 50, message: "Max length is 50"},
+                                minLength: {value: 5, message: "Min length is 5"}
                             })}/>
                             <p>{formState.errors.email?.message}</p>
                         </div>
                         <div className="inputDiv">
                             <h4 className="inputTitle">Password</h4>
                             <input type="password" className="inputText" {...register("password", {
-                                required: {value: true, message: "This field is required"}
+                                required: {value: true, message: "This field is required"},
+                                maxLength: {value: 20, message: "Max length is 20"},
+                                minLength: {value: 8, message: "Min length is 5"}
                             })}/>
                             <p>{formState.errors.password?.message}</p>
                         </div>
@@ -117,7 +123,7 @@ export function AuthRegModal(){
                             status === "reg" &&
                             <div className="inputDiv">
                                 <h4 className="inputTitle">Age</h4>
-                                <input type="text" className="inputText" {...register("age", {
+                                <input type="number" className="inputText" {...register("age", {
                                     required: {value: true, message: "This field is required"},
                                     valueAsNumber: true,
                                     max: {value: 100, message: "Age must be less than 100"},

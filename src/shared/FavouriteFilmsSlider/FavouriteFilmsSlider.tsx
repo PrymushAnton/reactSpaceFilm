@@ -2,7 +2,7 @@ import { Carousel } from "react-bootstrap";
 import { IFavouriteFilm, useFavouriteFilms } from "../../hooks/useFavouriteFilms";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import "./FavouriteFilmsSlider.css"
 
 export function FavouriteFilmsSlider() {
 
@@ -26,18 +26,18 @@ export function FavouriteFilmsSlider() {
             interval={null}
             nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" />}
             prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon" />}
-            className="favouriteFilmsSlider"
         >
             {items.map((item, index) => (
                 <Carousel.Item key={index}>
-                    <div id = "sliderPageDiv">
+                    <div className="carouselItem">
                         {item.map((obj, idx) => (
                             <Link to={`/film/${obj.id}`} className='filmDivProfile' key={idx}>
-                                <img className="img-thumbnail" src={obj.src}/>
-                                <p id ="name">{obj.name}</p>
+                                <img className="favouriteFilmImageProfile" src={obj.src}/>
+                                <p className ="name">{obj.name.length > 17 ? obj.name.slice(0, 17) + "..." : obj.name}</p>
                             </Link>
                         ))}
                     </div>
+                    
                 </Carousel.Item>
             ))}
         </Carousel>

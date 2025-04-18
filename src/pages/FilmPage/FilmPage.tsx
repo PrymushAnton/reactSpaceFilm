@@ -8,6 +8,9 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useUserContext } from "../../context/userContext"
 
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { useIsFavourite } from "../../hooks/useIsFavourite"
+
 interface IActor{
     name: string
     id: number
@@ -52,10 +55,37 @@ export function FilmPage() {
     const params = useParams()
     const {film, isLoading, error} = useFilmById(Number(params.id))
     const {getToken, isAuthenticated} = useUserContext()
-    
     const {register, formState, handleSubmit} = useForm<IReviewData>({
         mode: "onSubmit"
     })
+
+    const [isFavourite, setIsFavourite] = useState<boolean>(false)
+
+    const {result, isLoading: isLoadingIsFavourite, error: errorIsFavourite} = useIsFavourite(Number(params.id))
+
+    useEffect(() => {
+        setIsFavourite(result)
+    }, [result])
+
+
+    async function sendIsFavourite() {
+        try{
+            const token = getToken()
+            if (token === "error") return
+
+            const response = await fetch(`http://localhost:3001/api/user/` + (isFavourite ? "remove-favourite-film" : "add-favourite-film") , { 
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({filmId: params.id})
+            })
+            await response.json()
+        } catch (error) {
+        }
+    }
+
 
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
     const [filmState, setFilmState] = useState<IFilm>()
@@ -69,14 +99,12 @@ export function FilmPage() {
     }, [isSubmitted])
 
     useEffect(() => {
-        setFilmState(film)
-    }, [film])
-
-    useEffect(() => {
         if (film !== undefined) {
             addFilm(film)
         }
+        setFilmState(film)
     }, [film])
+
 
     function onSubmit(data: IReviewData){
         console.log(data)
@@ -131,6 +159,14 @@ export function FilmPage() {
                 <div id="filmInfoDiv">
                     <div id="nameOfFilmDiv">
                         <h2>{film && film.name}</h2>
+
+                        {film 
+                            ? isFavourite
+                                ?  <button className="favourite buttonAddToFavouriteFilmPage" onClick={() => {setIsFavourite(false); sendIsFavourite()}}><FaBookmark/>Remove from favourite</button>
+                                : <button className="notFavourite buttonAddToFavouriteFilmPage" onClick={() => {setIsFavourite(true); sendIsFavourite()}}><FaRegBookmark/>Add to favourite</button>
+                            : undefined
+                        }
+
                     </div>
                     <table id="filmInfoDivColumns">
                         <tbody>
