@@ -1,7 +1,6 @@
 import "./CatalogFilms.css"
 import { getStarsFromPercentage } from "../NowInTheatersComponent/NowInTheatersCarousel"
-// import { IFilm } from "../../hooks/useCategory";
-// import { ICategories } from "../CatalogList/CatalogList"
+
 
 
 interface IFilm{

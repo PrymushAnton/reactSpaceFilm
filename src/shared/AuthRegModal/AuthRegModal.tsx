@@ -11,9 +11,10 @@ interface ISubmitData{
     email: string
     password: string
     src?: string
+    age: number
 }
 
-export function AuthModal(){
+export function AuthRegModal(){
     const [status, setStatus] = useState<"reg" | "log" | "closed">("closed")
     const [button, setButton] = useState<"reg" | "log" | null>(null)
     const {register: registerUser, login, isAuthenticated, logout} = useUserContext()
@@ -44,7 +45,7 @@ export function AuthModal(){
         if (button === "log") {
             login(data.email, data.password)
         } else if (button === "reg") {
-            registerUser(data.email, data.name as string, data.src as string, data.password)
+            registerUser(data.email, data.name as string, data.src as string, data.password, data.age as number)
         }
         closeModal()
     }
@@ -83,7 +84,9 @@ export function AuthModal(){
                             <div className="inputDiv">
                                 <h4 className="inputTitle">Name</h4>
                                 <input type="text" className="inputText" {...register("name", {
-                                    required: {value: true, message: "This field is required"}
+                                    required: {value: true, message: "This field is required"},
+                                    maxLength: {value: 20, message: "Max length is 20"},
+                                    minLength: {value: 5, message: "Min length is 5"}
                                 })}/>
                                 <p>{formState.errors.name?.message}</p>
                             </div>
@@ -91,14 +94,18 @@ export function AuthModal(){
                         <div className="inputDiv">
                             <h4 className="inputTitle">Email</h4>
                             <input type="text" className="inputText" {...register("email", {
-                                required: {value: true, message: "This field is required"}
+                                required: {value: true, message: "This field is required"},
+                                maxLength: {value: 50, message: "Max length is 50"},
+                                minLength: {value: 5, message: "Min length is 5"}
                             })}/>
                             <p>{formState.errors.email?.message}</p>
                         </div>
                         <div className="inputDiv">
                             <h4 className="inputTitle">Password</h4>
                             <input type="password" className="inputText" {...register("password", {
-                                required: {value: true, message: "This field is required"}
+                                required: {value: true, message: "This field is required"},
+                                maxLength: {value: 20, message: "Max length is 20"},
+                                minLength: {value: 8, message: "Min length is 5"}
                             })}/>
                             <p>{formState.errors.password?.message}</p>
                         </div>
@@ -110,6 +117,19 @@ export function AuthModal(){
                                     required: {value: true, message: "This field is required"}
                                 })}/>
                                 <p>{formState.errors.src?.message}</p>
+                            </div>
+                        }
+                        {
+                            status === "reg" &&
+                            <div className="inputDiv">
+                                <h4 className="inputTitle">Age</h4>
+                                <input type="number" className="inputText" {...register("age", {
+                                    required: {value: true, message: "This field is required"},
+                                    valueAsNumber: true,
+                                    max: {value: 100, message: "Age must be less than 100"},
+                                    min: {value: 5, message: "Age must be more than 5"}
+                                })}/>
+                                <p>{formState.errors.age?.message}</p>
                             </div>
                         }
                     </Modal.Body>

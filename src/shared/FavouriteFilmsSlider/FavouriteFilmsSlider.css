@@ -1,0 +1,22 @@
+
+
+.carouselItem{
+    display: flex !important;
+    justify-content: start;
+    padding: 40px;
+    padding-top: 20px;
+}
+
+.favouriteFilmImageProfile{
+    width: 70%;
+}
+
+.filmDivProfile{
+    width: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(88, 88, 88);
+}

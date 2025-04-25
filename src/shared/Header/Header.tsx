@@ -1,28 +1,32 @@
 import { Link } from "react-router-dom"
 import "./Header.css"
-import { AuthModal } from "../AuthRegModal/AuthRegModal"
+import { AuthRegModal } from "../AuthRegModal/AuthRegModal"
 import { useUserContext } from "../../context/userContext"
 
 
 export function Header() {
-    const {isAdmin} = useUserContext()
+    const {isAdmin, user, isAuthenticated} = useUserContext()
     
     return (
         <header>
-            <h1 id="logoHeader"><Link to="/">SpaceFilm</Link></h1>
             
-            <div id="catalogNews">
+            <div id="leftContainerHeader">
+                <h1 id="logoHeader"><Link to="/">SpaceFilm</Link></h1>
+
                 <Link to="/catalog">Catalog</Link>
-                <Link to="/news">News</Link>
                 {
                     isAdmin() && <Link to="/admin">Admin Panel</Link>
                 }
-                {/* <a href="" id="Catalog">Catalog</a>
-                <a href="" id="News">News</a> */}
             </div>
             <div id="searchLogin">
-                {/* <input type="text" name="" id="inputSearch" placeholder="Search"/> */}
-                <AuthModal></AuthModal> 
+                <AuthRegModal></AuthRegModal>
+                {
+                    isAuthenticated() &&
+                    <Link to={"/profile"} className="userInfoHeader">
+                        {user && user.name.length > 10 ? user.name.slice(0, 10) + "..." : user?.name}
+                        <img src={user?.src} alt="" className="userImageHeader"/>
+                    </Link>
+                }
             </div>
         </header>
     )

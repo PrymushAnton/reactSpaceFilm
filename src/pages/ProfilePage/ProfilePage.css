@@ -1,0 +1,58 @@
+
+
+.profilePage{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+    grid-template-rows: auto auto auto;
+}
+
+.userDataProfile{
+    grid-column: 2 / 7;
+    grid-row: 1;
+    display: flex;
+    gap: 15px;
+}
+
+.userImageProfile{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.favouriteFilmsProfile{
+    grid-column: 2 / 7;
+    grid-row: 2;
+    margin-top: 30px;
+}
+
+.favouriteFilmsTitleProfile{
+    padding-left: 5px;
+    border-left: 3px solid black;
+}
+
+.userDataButtonsDivProfile{
+    display: flex;
+    gap: 10px;
+}
+
+
+.buttonProfile {
+	border-radius: 15px;
+	padding: 0 7px;
+	height: 30px;
+	background-color: rgb(208, 243, 255);
+	color: black;
+	border: 1px solid black;
+	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.buttonProfile:hover{
+	background-color: #1882FF;
+	color: white;
+}
+
+.modal-footer{
+    justify-content: center;
+    align-items: center;
+}

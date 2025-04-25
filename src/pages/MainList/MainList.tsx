@@ -1,20 +1,11 @@
+import "./MainList.css"
 import { CarouselCelebrities } from "../../shared/CarouselCelebrities/CarouselCelebrities"
-import { ComingSoonSliderNew } from "../../shared/ComingSoonSliderNew/ComingSoonSliderNew"
+import { NewFilms } from "../../shared/NewFilms/NewFilms"
 import { NowInTheatersCarousel } from "../../shared/NowInTheatersComponent/NowInTheatersCarousel"
 import { RecentNewsSlider } from "../../shared/RecentNewsSlider/RecentNewsSlider"
-import { Slider } from "../../shared/Slider/Slider"
-import "./MainList.css"
-// import { AuthModal } from "../../shared/AuthRegModal/AuthRegModal"
-// import { RegModal } from "../../shared/AuthRegModal/AuthRegModal"
-
-
 import { useRecentlyViewedFilmsContext } from "../../context/recentlyViewedFilmsContext"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-// import { AuthModal } from "../../shared/AuthRegModal/AuthRegModal"
-// import { RegModal } from "../../shared/AuthRegModal/AuthRegModal"
-
-
 
 
 export function MainList(){
@@ -26,11 +17,8 @@ export function MainList(){
 
     return (
         <div id="MainList">
-            {/* <AuthModal></AuthModal> */}
-            {/* <RegModal></RegModal> */}
-            <ComingSoonSliderNew></ComingSoonSliderNew>
-            {/* <Slider></Slider> */}
-            {
+            <NewFilms></NewFilms>
+            {/* {
                 recommendedFilms.length > 0 &&
                 <div id="recommendedFilms">
                     <div id="titleRecommendations">
@@ -48,11 +36,11 @@ export function MainList(){
                     </div>
                     
                 </div>
-            }
+            } */}
             
-            <NowInTheatersCarousel span={5}></NowInTheatersCarousel>
+            {/* <NowInTheatersCarousel span={5}></NowInTheatersCarousel> */}
             <CarouselCelebrities></CarouselCelebrities>
-            <RecentNewsSlider></RecentNewsSlider>
+            {/* <RecentNewsSlider></RecentNewsSlider> */}
         </div>
     )
 }

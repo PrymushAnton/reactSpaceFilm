@@ -7,6 +7,7 @@ export interface IUser{
 }
 
 export interface IReview{
+    name: string
     text: string,
     mark: number,
     user: IUser

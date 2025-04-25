@@ -2,11 +2,12 @@ import { createContext, useContext, ReactNode, useState } from "react";
 import { Response } from "../shared/types/response";
 import { useEffect } from "react";
 
-interface IUser {
+export interface IUser {
 	email: string;
 	name: string;
 	src: string;
 	role: string;
+	age: number;
 }
 
 interface IUserContext {
@@ -16,12 +17,14 @@ interface IUserContext {
 		email: string,
 		name: string,
 		src: string,
-		password: string
+		password: string,
+		age: number
 	) => void;
 	isAuthenticated: () => boolean;
 	logout: () => void;
 	getToken: () => string | "error";
 	isAdmin: () => boolean;
+	getData: (token: string) => Promise<any>;
 }
 
 const initialValue: IUserContext = {
@@ -31,12 +34,14 @@ const initialValue: IUserContext = {
 		email: string,
 		name: string,
 		src: string,
-		password: string
+		password: string,
+		age: number
 	) => {},
 	isAuthenticated: () => false,
 	logout: () => {},
 	getToken: () => "",
-	isAdmin: () => false
+	isAdmin: () => false,
+	getData: async (token: string) => Promise<any>
 };
 const userContext = createContext<IUserContext>(initialValue);
 
@@ -91,7 +96,8 @@ export function UserContextProvider(props: IUserContextProviderProps) {
 		email: string,
 		name: string,
 		src: string,
-		password: string
+		password: string,
+		age: number
 	) {
 		try {
 			const response = await fetch(
@@ -104,6 +110,7 @@ export function UserContextProvider(props: IUserContextProviderProps) {
 						name: name,
 						src: src,
 						password: password,
+						age: age
 					}),
 				}
 			);
@@ -117,6 +124,7 @@ export function UserContextProvider(props: IUserContextProviderProps) {
 			localStorage.setItem("token", result.data);
 		} catch (error) {}
 	}
+	
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (!token) {
@@ -165,7 +173,8 @@ export function UserContextProvider(props: IUserContextProviderProps) {
 				isAuthenticated: isAuthenticated,
 				logout: logout,
 				getToken: getToken,
-				isAdmin: isAdmin
+				isAdmin: isAdmin,
+				getData: getData
 			}}
 		>
 			{props.children}
